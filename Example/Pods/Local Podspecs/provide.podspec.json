@@ -1,0 +1,22 @@
+{
+  "name": "provide",
+  "version": "0.1.0",
+  "summary": "A short description of provide.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/kthomas/provide",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "kthomas": "k.thomas@unmarkedconsulting.com"
+  },
+  "source": {
+    "git": "https://github.com/kthomas/provide.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "provide/Classes/**/*"
+}

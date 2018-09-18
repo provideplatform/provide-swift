@@ -1,0 +1,6 @@
+framework module provide {
+  umbrella header "provide-umbrella.h"
+
+  export *
+  module * { export * }
+}
