@@ -37,7 +37,6 @@
 		3896D07D215390F5000067F2 /* KTRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D068215390F5000067F2 /* KTRegex.swift */; };
 		3896D07E215390F5000067F2 /* KTVersionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D069215390F5000067F2 /* KTVersionHelper.swift */; };
 		3896D07F215390F5000067F2 /* KTJwtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D06B215390F5000067F2 /* KTJwtService.swift */; };
-		3896D080215390F5000067F2 /* KTS3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D06C215390F5000067F2 /* KTS3Service.swift */; };
 		3896D081215390F5000067F2 /* KTApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D06D215390F5000067F2 /* KTApiService.swift */; };
 		392D8B9E94BA0F2A1033E7983AABE5B8 /* ObjectMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C683B22A511CEDC1B661176CFEAB536D /* ObjectMapper-dummy.m */; };
 		39E46DB3A3EA5EB4427CC89A9FBE6127 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2046DF1C2CAC6A956AB09F8D534CBB /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -238,7 +237,6 @@
 		3896D068215390F5000067F2 /* KTRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTRegex.swift; sourceTree = "<group>"; };
 		3896D069215390F5000067F2 /* KTVersionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTVersionHelper.swift; sourceTree = "<group>"; };
 		3896D06B215390F5000067F2 /* KTJwtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTJwtService.swift; sourceTree = "<group>"; };
-		3896D06C215390F5000067F2 /* KTS3Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTS3Service.swift; sourceTree = "<group>"; };
 		3896D06D215390F5000067F2 /* KTApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTApiService.swift; sourceTree = "<group>"; };
 		3AE5994CE17D43D219C4C35A1D5DE4FF /* Pods-provide_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-provide_Tests.modulemap"; sourceTree = "<group>"; };
 		3B3802C9204CB2F4E6E36EF7C39362D3 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
@@ -545,7 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				3896D06B215390F5000067F2 /* KTJwtService.swift */,
-				3896D06C215390F5000067F2 /* KTS3Service.swift */,
 				3896D06D215390F5000067F2 /* KTApiService.swift */,
 			);
 			path = services;
@@ -1059,7 +1056,6 @@
 				3896D079215390F5000067F2 /* MKMapViewExtensions.swift in Sources */,
 				3896D07B215390F5000067F2 /* CLLocationExtensions.swift in Sources */,
 				3896D070215390F5000067F2 /* KTModel.swift in Sources */,
-				3896D080215390F5000067F2 /* KTS3Service.swift in Sources */,
 				3896D077215390F5000067F2 /* DateFormatterExtensions.swift in Sources */,
 				3896D078215390F5000067F2 /* NotificationCenterExtensions.swift in Sources */,
 				3896D06E215390F5000067F2 /* BuildConfig.swift in Sources */,

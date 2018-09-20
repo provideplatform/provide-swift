@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1B2C8F2BB943F8DA8B888D95 /* Pods_provide_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED7F07AA3820C22AF06E788 /* Pods_provide_Tests.framework */; };
+		3896D08421541742000067F2 /* StubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D08221541581000067F2 /* StubApiClient.swift */; };
 		39976FFD6BA408E7FDB91394 /* Pods_provide_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28EDFBD3838D98D85FF15F5 /* Pods_provide_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* ProvideIdentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		25B5AC43822A9B78679D5D15 /* provide.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = provide.podspec; path = ../provide.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3896D08221541581000067F2 /* StubApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubApiClient.swift; sourceTree = "<group>"; };
 		5ED7F07AA3820C22AF06E788 /* Pods_provide_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_provide_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* provide_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = provide_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,7 +41,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* provide_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = provide_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvideIdentTests.swift; sourceTree = "<group>"; };
 		88C35C459157BEFAA6D7B2EB /* Pods-provide_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-provide_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-provide_Example/Pods-provide_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A777B34015988BCE3BCE2755 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B28EDFBD3838D98D85FF15F5 /* Pods_provide_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_provide_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +117,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */,
+				3896D08221541581000067F2 /* StubApiClient.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -352,7 +355,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* ProvideIdentTests.swift in Sources */,
+				3896D08421541742000067F2 /* StubApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
