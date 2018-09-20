@@ -22,21 +22,23 @@ class ProvideApiClientTests: XCTestCase {
         performTestForBuildUrl(path: "path-to-resource?key=value&with=a%20space")
     }
     
+    // Using the ident interface for now.
     func testBuildUrlWithUnescapedQueryString() {
         let base = URL(string: "https://sub.domain.tld/")
         XCTAssertNotNil(base)
         let path = "path-to-resource?key=value&with=a space" // "path-to-✊🦃👀"
-        let result = ProvideApiClient().buildUrl(path: path, baseUrl: base!)
+        let result = ProvideApiClient().buildIdentUrl(path: path, baseUrl: base!)
         // TEST: update once conditional URL encoding is supported: XCTAssertEqual(result?.absoluteString, "\(base!)\(path)")
         XCTAssertNil(result)
     }
     
     // MARK: - Helper Methods
     
+    // Using the ident interface for now.
     func performTestForBuildUrl(path: String, function: String = #function, line: Int = #line) {
         let base = URL(string: "https://sub.domain.tld/")
         XCTAssertNotNil(base)
-        let result = ProvideApiClient().buildUrl(path: path, baseUrl: base!)
+        let result = ProvideApiClient().buildIdentUrl(path: path, baseUrl: base!)
         XCTAssertEqual(result?.absoluteString, "\(base!)\(path)")
     }
 

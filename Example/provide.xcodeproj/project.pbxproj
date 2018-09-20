@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1B2C8F2BB943F8DA8B888D95 /* Pods_provide_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED7F07AA3820C22AF06E788 /* Pods_provide_Tests.framework */; };
-		3896D08421541742000067F2 /* StubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896D08221541581000067F2 /* StubApiClient.swift */; };
 		38EB61F72154298300AB9F73 /* ProvideApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB61F62154298300AB9F73 /* ProvideApiClientTests.swift */; };
+		38EB61FA215439D000AB9F73 /* StubApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB61F9215439D000AB9F73 /* StubApiClient.swift */; };
+		38EB61FC215439DC00AB9F73 /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB61FB215439DC00AB9F73 /* XCTestCaseExtensions.swift */; };
 		39976FFD6BA408E7FDB91394 /* Pods_provide_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28EDFBD3838D98D85FF15F5 /* Pods_provide_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -31,8 +32,9 @@
 
 /* Begin PBXFileReference section */
 		25B5AC43822A9B78679D5D15 /* provide.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = provide.podspec; path = ../provide.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		3896D08221541581000067F2 /* StubApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubApiClient.swift; sourceTree = "<group>"; };
 		38EB61F62154298300AB9F73 /* ProvideApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvideApiClientTests.swift; sourceTree = "<group>"; };
+		38EB61F9215439D000AB9F73 /* StubApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubApiClient.swift; sourceTree = "<group>"; };
+		38EB61FB215439DC00AB9F73 /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
 		5ED7F07AA3820C22AF06E788 /* Pods_provide_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_provide_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* provide_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = provide_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38EB61F8215439A400AB9F73 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				38EB61F9215439D000AB9F73 /* StubApiClient.swift */,
+				38EB61FB215439DC00AB9F73 /* XCTestCaseExtensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +132,7 @@
 			children = (
 				38EB61F62154298300AB9F73 /* ProvideApiClientTests.swift */,
 				607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */,
-				3896D08221541581000067F2 /* StubApiClient.swift */,
+				38EB61F8215439A400AB9F73 /* Helpers */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -358,9 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38EB61FC215439DC00AB9F73 /* XCTestCaseExtensions.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* ProvideIdentTests.swift in Sources */,
 				38EB61F72154298300AB9F73 /* ProvideApiClientTests.swift in Sources */,
-				3896D08421541742000067F2 /* StubApiClient.swift in Sources */,
+				38EB61FA215439D000AB9F73 /* StubApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

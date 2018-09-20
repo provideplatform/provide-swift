@@ -25,7 +25,7 @@ public class ProvideIdent: NSObject {
     public func authenticate(email: String, password: String,
                              successHandler: @escaping PrvdApiSuccessHandler,
                              failureHandler: @escaping PrvdApiFailureHandler) throws {
-        guard let url = api.buildUrl(path: authenticate) else { throw ProvideError.invalidUrl(path: authenticate) }
+        guard let url = api.buildIdentUrl(path: authenticate) else { throw ProvideError.invalidUrl(path: authenticate) }
         
         let request = Alamofire.request(url,
                                         method: .post,
@@ -42,7 +42,7 @@ public class ProvideIdent: NSObject {
     public func createApplication(name: String, networkId: String,
                                   successHandler: @escaping PrvdApiSuccessHandler,
                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
-        guard let url = api.buildUrl(path: createAppication) else { throw ProvideError.invalidUrl(path: createAppication) }
+        guard let url = api.buildIdentUrl(path: createAppication) else { throw ProvideError.invalidUrl(path: createAppication) }
 
         let request = Alamofire.request(url,
                                         method: .post,

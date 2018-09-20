@@ -57,7 +57,11 @@ open class ProvideApiClient: NSObject {
     /**
      * Note: this does *not* currently handle URL encoding of the given `path`. // TODO: address this later.
      */
-    open func buildUrl(path: String, baseUrl: URL = URL(string: "https://ident.provide.services/api/v1/")!) -> URL? {
+    open func buildIdentUrl(path: String, baseUrl: URL = URL(string: "https://ident.provide.services/api/v1/")!) -> URL? {
+        return buildUrl(path: path, baseUrl: baseUrl)
+    }
+    
+    private func buildUrl(path: String, baseUrl: URL) -> URL? {
         // guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
         
         return URL(string: path, relativeTo: baseUrl)
@@ -65,7 +69,7 @@ open class ProvideApiClient: NSObject {
     
     // MARK: Private Methods
     
-    // FIXME: implement this
+    // FIXME: implement this (tokens! in the Keychain?)
     private func headers() -> Dictionary<String, String> {
         return [:]
     }

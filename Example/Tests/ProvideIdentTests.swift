@@ -11,20 +11,17 @@ import provide
 
 class ProvideIdentTests: XCTestCase {
     
-    // TEST: figure out how to reduce duplication with the expectations, closures?
-    
     // MARK: - Authenticate Tests
     
     func testAuthenticateSuccess() throws {
         let email = "valid@email.com"
         let stub = StubApiClient()
-        let exp = expectation(description: "Completion block called")
+        let exp = expectation(description: "Completion block was called")
         
         try ProvideIdent(stub).authenticate(email: email, password: "Soop3rSuhkyuur", successHandler: { (result) in
-            exp.fulfill()
+            self.expectedPass(exp)
         }, failureHandler: { (response, result, error) in
-            exp.fulfill()
-            XCTFail("Request should have passed.")
+            self.unexpectedFail(exp)
         })
         
         waitForExpectations(timeout: 5) { (error) in
@@ -42,13 +39,12 @@ class ProvideIdentTests: XCTestCase {
         let email = "nope@noway.not"
         let stub = StubApiClient()
         stub.postShouldSucceed = false
-        let exp = expectation(description: "Completion block called")
+        let exp = expectation(description: "Completion block was called")
         
         try ProvideIdent(stub).authenticate(email: email, password: "S3cr3tTurk3y!", successHandler: { (result) in
-            exp.fulfill()
-            XCTFail("Request should have failed.")
+            self.unexpectedPass(exp)
         }, failureHandler: { (response, result, error) in
-            exp.fulfill()
+            self.expectedFail(exp)
         })
         
         waitForExpectations(timeout: 5) { (error) in
@@ -68,13 +64,12 @@ class ProvideIdentTests: XCTestCase {
         let name = "Created by a Unit Test"
         let networkId = "guid for a uuid"
         let stub = StubApiClient()
-        let exp = expectation(description: "Completion block called")
+        let exp = expectation(description: "Completion block was called")
         
         try ProvideIdent(stub).createApplication(name: name, networkId: networkId, successHandler: { (result) in
-            exp.fulfill()
+            self.expectedPass(exp)
         }, failureHandler: { (response, result, error) in
-            exp.fulfill()
-            XCTFail("Request should have passed.")
+            self.unexpectedFail(exp)
         })
         
         waitForExpectations(timeout: 5) { (error) in
@@ -94,13 +89,12 @@ class ProvideIdentTests: XCTestCase {
         let networkId = "guid for a uuid"
         let stub = StubApiClient()
         stub.postShouldSucceed = false
-        let exp = expectation(description: "Completion block called")
+        let exp = expectation(description: "Completion block was called")
         
         try ProvideIdent(stub).createApplication(name: name, networkId: networkId, successHandler: { (result) in
-            exp.fulfill()
-            XCTFail("Request should have failed.")
+            self.unexpectedPass(exp)
         }, failureHandler: { (response, result, error) in
-            exp.fulfill()
+            self.expectedFail(exp)
         })
         
         waitForExpectations(timeout: 5) { (error) in
