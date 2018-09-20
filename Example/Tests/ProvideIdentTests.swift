@@ -11,6 +11,8 @@ import provide
 
 class ProvideIdentTests: XCTestCase {
     
+    // TEST: figure out how to reduce duplication with the expectations, closures?
+    
     // MARK: - Authenticate Tests
     
     func testAuthenticateSuccess() throws {
@@ -22,7 +24,7 @@ class ProvideIdentTests: XCTestCase {
             exp.fulfill()
         }, failureHandler: { (response, result, error) in
             exp.fulfill()
-            XCTFail("Authentication should have passed.")
+            XCTFail("Request should have passed.")
         })
         
         waitForExpectations(timeout: 5) { (error) in
@@ -44,7 +46,7 @@ class ProvideIdentTests: XCTestCase {
         
         try ProvideIdent(stub).authenticate(email: email, password: "S3cr3tTurk3y!", successHandler: { (result) in
             exp.fulfill()
-            XCTFail("Authentication should have failed.")
+            XCTFail("Request should have failed.")
         }, failureHandler: { (response, result, error) in
             exp.fulfill()
         })
@@ -56,6 +58,59 @@ class ProvideIdentTests: XCTestCase {
                 XCTAssertTrue(true, "There should not have been an error")
                 XCTAssertNotNil(stub.mostRecentRequest)
                 XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(email))
+            }
+        }
+    }
+    
+    // MARK: - Create Application Tests
+    
+    func testCreateApplicatoinSuccess() throws {
+        let name = "Created by a Unit Test"
+        let networkId = "guid for a uuid"
+        let stub = StubApiClient()
+        let exp = expectation(description: "Completion block called")
+        
+        try ProvideIdent(stub).createApplication(name: name, networkId: networkId, successHandler: { (result) in
+            exp.fulfill()
+        }, failureHandler: { (response, result, error) in
+            exp.fulfill()
+            XCTFail("Request should have passed.")
+        })
+        
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                XCTAssertTrue(true, "There should not have been an error")
+                XCTAssertNotNil(stub.mostRecentRequest)
+                XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(name))
+                XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(networkId))
+            }
+        }
+    }
+    
+    func testCreateApplicationFailure() throws {
+        let name = "Created by a Unit Test"
+        let networkId = "guid for a uuid"
+        let stub = StubApiClient()
+        stub.postShouldSucceed = false
+        let exp = expectation(description: "Completion block called")
+        
+        try ProvideIdent(stub).createApplication(name: name, networkId: networkId, successHandler: { (result) in
+            exp.fulfill()
+            XCTFail("Request should have failed.")
+        }, failureHandler: { (response, result, error) in
+            exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                XCTAssertTrue(true, "There should not have been an error")
+                XCTAssertNotNil(stub.mostRecentRequest)
+                XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(name))
+                XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(networkId))
             }
         }
     }
