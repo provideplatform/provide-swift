@@ -2,14 +2,15 @@
   "name": "provide",
   "version": "0.1.0",
   "summary": "Provide swift client library",
-  "description": "Provide swift client library.",
+  "description": "Provide Swift client library.",
   "homepage": "https://github.com/provideservices/provide-swift",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "kthomas": "kyle@provide.services"
+    "kthomas": "kyle@provide.services",
+    "muncman": "kevin@provide.services"
   },
   "source": {
     "git": "https://github.com/provideservices/provide-swift.git",
