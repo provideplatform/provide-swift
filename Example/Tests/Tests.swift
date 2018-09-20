@@ -1,5 +1,6 @@
 import XCTest
 import provide
+@testable import provide_Example
 
 class Tests: XCTestCase {
     

@@ -485,6 +485,7 @@
 			baseConfigurationReference = 88C35C459157BEFAA6D7B2EB /* Pods-provide_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = provide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
@@ -499,6 +500,7 @@
 			baseConfigurationReference = FEB888DFF365B7F3F933BCC4 /* Pods-provide_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = provide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
