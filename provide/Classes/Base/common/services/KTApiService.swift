@@ -46,7 +46,7 @@ public class KTApiService: NSObject {
         return NSClassFromString("\(targetName).\(path.capitalized)")
     }
 
-    public func execute(_ request: DataRequest, successHandler: KTApiSuccessHandler?, failureHandler: KTApiFailureHandler?) {
+    public func execute(_ request: DataRequest, successHandler: @escaping KTApiSuccessHandler, failureHandler: @escaping KTApiFailureHandler) {
         request.responseJSON(queue: dispatchQueue) { response in
             let error = response.result.error
 
@@ -58,7 +58,7 @@ public class KTApiService: NSObject {
                 if let value = response.result.value {
                     if statusCode == 204 {
                         DispatchQueue.main.async {
-                            successHandler?(nil)
+                            successHandler(nil)
                         }
                         return
                     }
@@ -83,7 +83,7 @@ public class KTApiService: NSObject {
                             }
 
                             DispatchQueue.main.async {
-                                successHandler?(obj)
+                                successHandler(obj)
                             }
                         } else {
                             logWarn("Parsed response with \(statusCode) status code")
@@ -105,19 +105,19 @@ public class KTApiService: NSObject {
                             }
 
                             DispatchQueue.main.async {
-                                failureHandler?(response.response, obj, nil)
+                                failureHandler(response.response, obj, nil)
                             }
                         }
                     } else {
                         request.responseData { dataResponse in
                             if statusCode < 300 {
                                 DispatchQueue.main.async {
-                                    successHandler?(dataResponse.result.value as AnyObject?)
+                                    successHandler(dataResponse.result.value as AnyObject?)
                                 }
                             } else {
                                 logWarn("Parsed data response with \(statusCode) status code")
                                 DispatchQueue.main.async {
-                                    failureHandler?(dataResponse.response, nil, nil)
+                                    failureHandler(dataResponse.response, nil, nil)
                                 }
                             }
                         }
@@ -130,12 +130,12 @@ public class KTApiService: NSObject {
 
                         if statusCode < 300 {
                             DispatchQueue.main.async {
-                                successHandler?(dataResponse.result.value as AnyObject?)
+                                successHandler(dataResponse.result.value as AnyObject?)
                             }
                         } else {
                             logWarn("Parsed data response with \(statusCode) status code")
                             DispatchQueue.main.async {
-                                failureHandler?(dataResponse.response, nil, nil)
+                                failureHandler(dataResponse.response, nil, nil)
                             }
                         }
                     }
