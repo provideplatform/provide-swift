@@ -19,6 +19,28 @@
 		2C2D71D10D8D7C5ABC34ADA3945AE568 /* TransformOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB37022B236D6DAE3BF616E92C2BDB6 /* TransformOf.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2CF20D55AAA2A3B3D84C098D14E729DE /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E57D11E8D6653ECEBED64F2E5C16797 /* ObjectMapper.framework */; };
 		31E097613F217BBF4E774D235917E165 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E7A4E8AA7713607F8A62755C8BA170 /* TaskDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3832E1002153665F00B31F37 /* Goldmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E0FF2153665F00B31F37 /* Goldmine.swift */; };
+		3832E1022153666F00B31F37 /* Ident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1012153666F00B31F37 /* Ident.swift */; };
+		3832E11E2153676400B31F37 /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1062153676400B31F37 /* BuildConfig.swift */; };
+		3832E11F2153676400B31F37 /* KTPresignedS3Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1082153676400B31F37 /* KTPresignedS3Request.swift */; };
+		3832E1202153676400B31F37 /* KTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1092153676400B31F37 /* KTModel.swift */; };
+		3832E1212153676400B31F37 /* KTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E10A2153676400B31F37 /* KTError.swift */; };
+		3832E1222153676400B31F37 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E10C2153676400B31F37 /* ArrayExtensions.swift */; };
+		3832E1232153676400B31F37 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E10D2153676400B31F37 /* NSURLExtensions.swift */; };
+		3832E1242153676400B31F37 /* MKPolygonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E10E2153676400B31F37 /* MKPolygonExtensions.swift */; };
+		3832E1252153676400B31F37 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E10F2153676400B31F37 /* DictionaryExtensions.swift */; };
+		3832E1262153676400B31F37 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1102153676400B31F37 /* StringExtensions.swift */; };
+		3832E1272153676400B31F37 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1112153676400B31F37 /* DateFormatterExtensions.swift */; };
+		3832E1282153676400B31F37 /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1122153676400B31F37 /* NotificationCenterExtensions.swift */; };
+		3832E1292153676400B31F37 /* MKMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1132153676400B31F37 /* MKMapViewExtensions.swift */; };
+		3832E12A2153676400B31F37 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1142153676400B31F37 /* DateExtensions.swift */; };
+		3832E12B2153676400B31F37 /* CLLocationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1152153676400B31F37 /* CLLocationExtensions.swift */; };
+		3832E12C2153676400B31F37 /* KTFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1172153676400B31F37 /* KTFunctions.swift */; };
+		3832E12D2153676400B31F37 /* KTRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1182153676400B31F37 /* KTRegex.swift */; };
+		3832E12E2153676400B31F37 /* KTVersionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E1192153676400B31F37 /* KTVersionHelper.swift */; };
+		3832E12F2153676400B31F37 /* KTJwtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E11B2153676400B31F37 /* KTJwtService.swift */; };
+		3832E1302153676400B31F37 /* KTS3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E11C2153676400B31F37 /* KTS3Service.swift */; };
+		3832E1312153676400B31F37 /* KTApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E11D2153676400B31F37 /* KTApiService.swift */; };
 		392D8B9E94BA0F2A1033E7983AABE5B8 /* ObjectMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C683B22A511CEDC1B661176CFEAB536D /* ObjectMapper-dummy.m */; };
 		39E46DB3A3EA5EB4427CC89A9FBE6127 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2046DF1C2CAC6A956AB09F8D534CBB /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3FBAADF8BD850255F89666E78AB03054 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124D2E3C52B7D4373F3E914C71A0252 /* DateTransform.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -199,6 +221,28 @@
 		35E50B13A49947618CD4C62E5A64CC42 /* JWT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWT.swift; path = JWTDecode/JWT.swift; sourceTree = "<group>"; };
 		3698710E78AF006FB9C2FC267B114487 /* AlamofireObjectMapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AlamofireObjectMapper-prefix.pch"; sourceTree = "<group>"; };
 		36A7D56960FF7D165E9CAC13C1221383 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		3832E0FF2153665F00B31F37 /* Goldmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Goldmine.swift; path = provide/Classes/Goldmine.swift; sourceTree = "<group>"; };
+		3832E1012153666F00B31F37 /* Ident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Ident.swift; path = provide/Classes/Ident.swift; sourceTree = "<group>"; };
+		3832E1062153676400B31F37 /* BuildConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildConfig.swift; sourceTree = "<group>"; };
+		3832E1082153676400B31F37 /* KTPresignedS3Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTPresignedS3Request.swift; sourceTree = "<group>"; };
+		3832E1092153676400B31F37 /* KTModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTModel.swift; sourceTree = "<group>"; };
+		3832E10A2153676400B31F37 /* KTError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTError.swift; sourceTree = "<group>"; };
+		3832E10C2153676400B31F37 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		3832E10D2153676400B31F37 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLExtensions.swift; sourceTree = "<group>"; };
+		3832E10E2153676400B31F37 /* MKPolygonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKPolygonExtensions.swift; sourceTree = "<group>"; };
+		3832E10F2153676400B31F37 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		3832E1102153676400B31F37 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		3832E1112153676400B31F37 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
+		3832E1122153676400B31F37 /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtensions.swift; sourceTree = "<group>"; };
+		3832E1132153676400B31F37 /* MKMapViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensions.swift; sourceTree = "<group>"; };
+		3832E1142153676400B31F37 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		3832E1152153676400B31F37 /* CLLocationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationExtensions.swift; sourceTree = "<group>"; };
+		3832E1172153676400B31F37 /* KTFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTFunctions.swift; sourceTree = "<group>"; };
+		3832E1182153676400B31F37 /* KTRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTRegex.swift; sourceTree = "<group>"; };
+		3832E1192153676400B31F37 /* KTVersionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTVersionHelper.swift; sourceTree = "<group>"; };
+		3832E11B2153676400B31F37 /* KTJwtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTJwtService.swift; sourceTree = "<group>"; };
+		3832E11C2153676400B31F37 /* KTS3Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTS3Service.swift; sourceTree = "<group>"; };
+		3832E11D2153676400B31F37 /* KTApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTApiService.swift; sourceTree = "<group>"; };
 		3985CD2AA47B827CAF2DF184A7760C97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AE5994CE17D43D219C4C35A1D5DE4FF /* Pods-provide_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-provide_Tests.modulemap"; sourceTree = "<group>"; };
 		3B3802C9204CB2F4E6E36EF7C39362D3 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
@@ -431,6 +475,82 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3832E1032153676400B31F37 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3832E1042153676400B31F37 /* common */,
+			);
+			name = Base;
+			path = provide/Base;
+			sourceTree = "<group>";
+		};
+		3832E1042153676400B31F37 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				3832E1052153676400B31F37 /* enums */,
+				3832E1072153676400B31F37 /* models */,
+				3832E10B2153676400B31F37 /* extensions */,
+				3832E1162153676400B31F37 /* helpers */,
+				3832E11A2153676400B31F37 /* services */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		3832E1052153676400B31F37 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				3832E1062153676400B31F37 /* BuildConfig.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		3832E1072153676400B31F37 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				3832E1082153676400B31F37 /* KTPresignedS3Request.swift */,
+				3832E1092153676400B31F37 /* KTModel.swift */,
+				3832E10A2153676400B31F37 /* KTError.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		3832E10B2153676400B31F37 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3832E10C2153676400B31F37 /* ArrayExtensions.swift */,
+				3832E10D2153676400B31F37 /* NSURLExtensions.swift */,
+				3832E10E2153676400B31F37 /* MKPolygonExtensions.swift */,
+				3832E10F2153676400B31F37 /* DictionaryExtensions.swift */,
+				3832E1102153676400B31F37 /* StringExtensions.swift */,
+				3832E1112153676400B31F37 /* DateFormatterExtensions.swift */,
+				3832E1122153676400B31F37 /* NotificationCenterExtensions.swift */,
+				3832E1132153676400B31F37 /* MKMapViewExtensions.swift */,
+				3832E1142153676400B31F37 /* DateExtensions.swift */,
+				3832E1152153676400B31F37 /* CLLocationExtensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		3832E1162153676400B31F37 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3832E1172153676400B31F37 /* KTFunctions.swift */,
+				3832E1182153676400B31F37 /* KTRegex.swift */,
+				3832E1192153676400B31F37 /* KTVersionHelper.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		3832E11A2153676400B31F37 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				3832E11B2153676400B31F37 /* KTJwtService.swift */,
+				3832E11C2153676400B31F37 /* KTS3Service.swift */,
+				3832E11D2153676400B31F37 /* KTApiService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		398326B9C97374788F176EF97BE9437E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +615,9 @@
 			isa = PBXGroup;
 			children = (
 				1BDEA4EC892A035DF2E2A53A2537A588 /* APIClient.swift */,
+				3832E0FF2153665F00B31F37 /* Goldmine.swift */,
+				3832E1012153666F00B31F37 /* Ident.swift */,
+				3832E1032153676400B31F37 /* Base */,
 				1DA75704486F7614DE8E0B1FDFD5C679 /* Pod */,
 				B3659288533FA7BECF8BFF35BBD68965 /* Support Files */,
 			);
@@ -925,8 +1048,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3832E12C2153676400B31F37 /* KTFunctions.swift in Sources */,
+				3832E1232153676400B31F37 /* NSURLExtensions.swift in Sources */,
+				3832E12A2153676400B31F37 /* DateExtensions.swift in Sources */,
+				3832E11F2153676400B31F37 /* KTPresignedS3Request.swift in Sources */,
+				3832E12F2153676400B31F37 /* KTJwtService.swift in Sources */,
+				3832E1212153676400B31F37 /* KTError.swift in Sources */,
+				3832E1022153666F00B31F37 /* Ident.swift in Sources */,
 				7B5DDED619F53CF0F8AFE216E52663BF /* APIClient.swift in Sources */,
+				3832E1292153676400B31F37 /* MKMapViewExtensions.swift in Sources */,
+				3832E12B2153676400B31F37 /* CLLocationExtensions.swift in Sources */,
+				3832E1202153676400B31F37 /* KTModel.swift in Sources */,
+				3832E1302153676400B31F37 /* KTS3Service.swift in Sources */,
+				3832E1272153676400B31F37 /* DateFormatterExtensions.swift in Sources */,
+				3832E1282153676400B31F37 /* NotificationCenterExtensions.swift in Sources */,
+				3832E11E2153676400B31F37 /* BuildConfig.swift in Sources */,
+				3832E1312153676400B31F37 /* KTApiService.swift in Sources */,
+				3832E1002153665F00B31F37 /* Goldmine.swift in Sources */,
+				3832E12D2153676400B31F37 /* KTRegex.swift in Sources */,
+				3832E1222153676400B31F37 /* ArrayExtensions.swift in Sources */,
 				9BD32DE9F0F323877CC1041D51481C6F /* provide-dummy.m in Sources */,
+				3832E1242153676400B31F37 /* MKPolygonExtensions.swift in Sources */,
+				3832E12E2153676400B31F37 /* KTVersionHelper.swift in Sources */,
+				3832E1262153676400B31F37 /* StringExtensions.swift in Sources */,
+				3832E1252153676400B31F37 /* DictionaryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
