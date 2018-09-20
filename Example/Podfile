@@ -4,7 +4,6 @@ use_frameworks!
 
 target 'provide_Example' do
   pod 'provide', :path => '../'
-  pod 'KTSwiftExtensions', :path => '../../KTSwiftExtensions/'
 
   target 'provide_Tests' do
     inherit! :search_paths

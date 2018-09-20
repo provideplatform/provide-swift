@@ -4,18 +4,14 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - JWTDecode (2.1.1)
-  - KTSwiftExtensions (0.25.0):
+  - ObjectMapper (3.3.0)
+  - provide (0.1.0):
     - Alamofire (~> 4.0)
     - AlamofireObjectMapper (~> 5.0)
     - JWTDecode (~> 2.0)
-    - MBProgressHUD (~> 1.0)
     - ObjectMapper (~> 3.0)
-  - MBProgressHUD (1.1.0)
-  - ObjectMapper (3.3.0)
-  - provide (0.1.0)
 
 DEPENDENCIES:
-  - KTSwiftExtensions (from `../../KTSwiftExtensions/`)
   - provide (from `../`)
 
 SPEC REPOS:
@@ -23,12 +19,9 @@ SPEC REPOS:
     - Alamofire
     - AlamofireObjectMapper
     - JWTDecode
-    - MBProgressHUD
     - ObjectMapper
 
 EXTERNAL SOURCES:
-  KTSwiftExtensions:
-    :path: "../../KTSwiftExtensions/"
   provide:
     :path: "../"
 
@@ -36,11 +29,9 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
-  KTSwiftExtensions: 8a1b9a463321223f4a45b74d621d2f67b1591e3d
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  provide: c96c591e80168764c4c0a4e3237bd6b1998524f7
+  provide: 4db4c0d44a8689d59258034495fb93407e822fb5
 
-PODFILE CHECKSUM: 390647ba56825e34b9d62819b72df62add8cad89
+PODFILE CHECKSUM: 0103ff30afa80686f9d01ea0c04c3acec17f23fb
 
 COCOAPODS: 1.5.3

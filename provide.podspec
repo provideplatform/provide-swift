@@ -9,7 +9,8 @@
 Pod::Spec.new do |s|
   s.name             = 'provide'
   s.version          = '0.1.0'
-  s.summary          = 'Provide swift client library'
+  s.summary          = 'Provide Swift client library'
+  s.swift_version    = '4.2'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -28,7 +29,7 @@ Provide Swift client library.
   s.source           = { :git => 'https://github.com/provideservices/provide-swift.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.3'
 
   s.source_files = 'provide/Classes/**/*'
   
@@ -39,4 +40,9 @@ Provide Swift client library.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  # s.dependency 'KTSwiftExtensions'
+  s.dependency 'Alamofire', '~> 4.0'
+  s.dependency 'AlamofireObjectMapper', '~> 5.0'
+  s.dependency 'ObjectMapper', '~> 3.0'
+  s.dependency 'JWTDecode', '~> 2.0'
 end

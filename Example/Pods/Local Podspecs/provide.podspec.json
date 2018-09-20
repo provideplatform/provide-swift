@@ -1,7 +1,8 @@
 {
   "name": "provide",
   "version": "0.1.0",
-  "summary": "Provide swift client library",
+  "summary": "Provide Swift client library",
+  "swift_version": "4.2",
   "description": "Provide Swift client library.",
   "homepage": "https://github.com/provideservices/provide-swift",
   "license": {
@@ -17,7 +18,21 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.3"
   },
-  "source_files": "provide/Classes/**/*"
+  "source_files": "provide/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "~> 4.0"
+    ],
+    "AlamofireObjectMapper": [
+      "~> 5.0"
+    ],
+    "ObjectMapper": [
+      "~> 3.0"
+    ],
+    "JWTDecode": [
+      "~> 2.0"
+    ]
+  }
 }
