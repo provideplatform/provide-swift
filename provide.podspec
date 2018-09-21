@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'provide'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Provide Swift client library'
   s.swift_version    = '4.2'
 
