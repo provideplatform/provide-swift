@@ -218,14 +218,6 @@ public class ProvideGoldmine: NSObject {
         }
     }
     
-    // MARK: - Network Methods
-    
-    
-    
-    // FIXME: do the millions of them (extension?)
-    
-    
-    
     // MARK: - Oracle Methods
     
     public func createOracle(parameters: Parameters,
@@ -445,6 +437,379 @@ public class ProvideGoldmine: NSObject {
                                         encoding: JSONEncoding.prettyPrinted,
                                         headers: api.headers())
         api.post(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+}
+
+extension ProvideGoldmine {
+    
+    // MARK: - Network Methods
+    
+    // MARK: Network CRUD Methods
+    
+    public func listNetworks(parameters: Parameters,
+                             successHandler: @escaping PrvdApiSuccessHandler,
+                             failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildGoldmineUrl(path: networks) else { throw ProvideError.invalidUrl(path: networks) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchNetworkDetails(networkId: String,
+                                    successHandler: @escaping PrvdApiSuccessHandler,
+                                    failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func createNetwork(parameters: Parameters,
+                              successHandler: @escaping PrvdApiSuccessHandler,
+                              failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildGoldmineUrl(path: networks) else { throw ProvideError.invalidUrl(path: networks) }
+        
+        let request = Alamofire.request(url,
+                                        method: .post,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.post(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func updateNetwork(networkId: String,
+                              parameters: Parameters,
+                              successHandler: @escaping PrvdApiSuccessHandler,
+                              failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .put,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.put(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    
+    // MARK: Network Methods with Other Types
+    
+    public func listNetworkAccounts(networkId: String,
+                                    parameters: Parameters,
+                                    successHandler: @escaping PrvdApiSuccessHandler,
+                                    failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/accounts"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkBlocks(networkId: String,
+                                  parameters: Parameters,
+                                  successHandler: @escaping PrvdApiSuccessHandler,
+                                  failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/blocks"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkBridges(networkId: String,
+                                   parameters: Parameters,
+                                   successHandler: @escaping PrvdApiSuccessHandler,
+                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/bridges"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkConnectors(networkId: String,
+                                      parameters: Parameters,
+                                      successHandler: @escaping PrvdApiSuccessHandler,
+                                      failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/connectors"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkContracts(networkId: String,
+                                     parameters: Parameters,
+                                     successHandler: @escaping PrvdApiSuccessHandler,
+                                     failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/contracts"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkOracles(networkId: String,
+                                   parameters: Parameters,
+                                   successHandler: @escaping PrvdApiSuccessHandler,
+                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/oracles"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkTokens(networkId: String,
+                                  parameters: Parameters,
+                                  successHandler: @escaping PrvdApiSuccessHandler,
+                                  failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/tokens"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listNetworkTransactions(networkId: String,
+                                        parameters: Parameters,
+                                        successHandler: @escaping PrvdApiSuccessHandler,
+                                        failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/transactions"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchNetworkStatus(networkId: String,
+                                   successHandler: @escaping PrvdApiSuccessHandler,
+                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/status"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchNetworkContractDetails(networkId: String,
+                                            contractId: String,
+                                            successHandler: @escaping PrvdApiSuccessHandler,
+                                            failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/contracts/\(contractId)"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchNetworkTransactionDetails(networkId: String,
+                                               transactionId: String,
+                                               successHandler: @escaping PrvdApiSuccessHandler,
+                                               failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/transactions/\(transactionId)"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    // MARK: Network Node Methods
+    
+    public func listNetworkNodes(networkId: String,
+                                 parameters: Parameters,
+                                 successHandler: @escaping PrvdApiSuccessHandler,
+                                 failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/nodes"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchNetworkNodeDetails(networkId: String,
+                                        nodeId: String,
+                                        successHandler: @escaping PrvdApiSuccessHandler,
+                                        failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/nodes/\(nodeId)"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func createNetworkNode(networkId: String,
+                                  parameters: Parameters,
+                                  successHandler: @escaping PrvdApiSuccessHandler,
+                                  failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/nodes"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .post,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.post(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchNetworkNodeLogs(networkId: String,
+                                     nodeId: String,
+                                     successHandler: @escaping PrvdApiSuccessHandler,
+                                     failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/nodes/\(nodeId)/logs"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func deleteNetworkNodes(networkId: String,
+                                   nodeId: String,
+                                   successHandler: @escaping PrvdApiSuccessHandler,
+                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(networks)/\(networkId)/nodes/\(nodeId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .delete,
+                                        headers: api.headers())
+        api.delete(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
             failureHandler(response, result, error)
