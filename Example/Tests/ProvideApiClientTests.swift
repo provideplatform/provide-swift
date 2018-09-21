@@ -34,7 +34,7 @@ class ProvideApiClientTests: XCTestCase {
     
     // MARK: - Helper Methods
     
-    // Using the ident interface for now.
+    // Using the ident interface for now (since the domain is overridable).
     func performTestForBuildUrl(path: String, file: StaticString = #file, line: UInt = #line) {
         let base = URL(string: "https://sub.domain.tld/")
         XCTAssertNotNil(base, file: file, line: line)

@@ -13,7 +13,7 @@ public class ProvideIdent: NSObject {
     private let api: ProvideApiClient
     
     // API Paths
-    // TODO: Consider making these enum cases (a la Moya?)
+    // SUGGEST: Consider making these enum cases (a la Moya?)
     let authenticate = "authenticate"
     let applications = "applications"
     let tokens = "tokens"

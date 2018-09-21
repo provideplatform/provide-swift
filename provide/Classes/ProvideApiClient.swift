@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-// TODO: do we need? AlamofireObjectMapper REMOVE pod if not / if can.
 
 public typealias PrvdApiSuccessHandler = (AnyObject?) -> Void
 public typealias PrvdApiFailureHandler = (HTTPURLResponse?, AnyObject?, NSError?) -> Void
@@ -18,8 +17,6 @@ enum ProvideError: Error {
 }
 
 open class ProvideApiClient: NSObject {
-    
-    // TODO: revisit making these closures optional...
     
     open func get(_ request: DataRequest,
                   successHandler: @escaping PrvdApiSuccessHandler,
@@ -56,14 +53,18 @@ open class ProvideApiClient: NSObject {
     // MARK: - Helper Methods
     
     /**
-     * Note: this does *not* currently handle URL encoding of the given `path`. // TODO: address this later.
+     * Note: these do *not* currently handle URL encoding of the given `path`.
      */
     open func buildIdentUrl(path: String, baseUrl: URL = URL(string: "https://ident.provide.services/api/v1/")!) -> URL? {
         return buildUrl(path: path, baseUrl: baseUrl)
     }
     
+    open func buildGoldmineUrl(path: String, baseUrl: URL = URL(string: "https://goldmine.provide.services/api/v1/")!) -> URL? {
+        return buildUrl(path: path, baseUrl: baseUrl)
+    }
+    
     private func buildUrl(path: String, baseUrl: URL) -> URL? {
-        // guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
+        // TODO: guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
         
         return URL(string: path, relativeTo: baseUrl)
     }
