@@ -24,6 +24,12 @@ class ProvideIdentTests: XCTestCase {
         
         try ProvideIdent(stub).authenticate(email: email, password: "Soop3rSuhkyuur", successHandler: { (result) in
             self.expectedPass(exp)
+            XCTAssertNotNil(result)
+            if let resultString = result as? String {
+                XCTAssertEqual(resultString, theToken)
+            } else {
+                XCTFail("Argument to success block should have been a String")
+            }
         }, failureHandler: { (response, result, error) in
             self.unexpectedFail(exp)
         })
@@ -63,7 +69,7 @@ class ProvideIdentTests: XCTestCase {
         }
     }
     
-    // MARK: - Create Application Tests
+    // MARK: - Application Tests
     
     func testCreateApplicationSuccess() throws {
         let name = "Created by a Unit Test"
@@ -77,6 +83,16 @@ class ProvideIdentTests: XCTestCase {
         
         try ProvideIdent(stub).createApplication(name: name, networkId: networkId, successHandler: { (result) in
             self.expectedPass(exp)
+            if let resultDict = result as? [String : Any] {
+                XCTAssertNotNil(resultDict["id"])
+                if let resultAppId = resultDict["id"] as? String {
+                    XCTAssertEqual(resultAppId, theAppId)
+                } else {
+                    XCTFail("Result dictionary should have had a key of 'id'")
+                }
+            } else {
+                XCTFail("Result should have been a dictionary")
+            }
         }, failureHandler: { (response, result, error) in
             self.unexpectedFail(exp)
         })
@@ -114,6 +130,59 @@ class ProvideIdentTests: XCTestCase {
                 XCTAssertNotNil(stub.mostRecentRequest)
                 XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(name))
                 XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(networkId))
+            }
+        }
+    }
+    
+    func testListApplicationsSuccess() throws {
+        let responseDict = [["first" : "1st-uuid"], ["second" : "2nd-uuid"], ["third" : "3rd-uuid"]]
+        let responseData = try JSONSerialization.data(withJSONObject: responseDict, options: .prettyPrinted)
+        let stub = StubApiClient()
+        stub.getSuccessResult = responseData as AnyObject
+        let exp = expectation(description: "Completion block was called")
+        
+        try ProvideIdent(stub).listApplications(successHandler: { (result) in
+            self.expectedPass(exp)
+            if let resultArray = result as? Array<[String : Any]> {
+                XCTAssertTrue(resultArray.contains(where: { (keyValuePair) -> Bool in
+                    keyValuePair.keys.contains(where: { (key) -> Bool in
+                        key == "first"
+                    })
+                }))
+            } else {
+                XCTFail("Result should have been an array of dictionaries")
+            }
+        }, failureHandler: { (response, result, error) in
+            self.unexpectedFail(exp)
+        })
+        
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                XCTAssertTrue(true, "There should not have been an error")
+                XCTAssertNotNil(stub.mostRecentRequest)
+            }
+        }
+    }
+    
+    func testListApplicationsFailure() throws {
+        let stub = StubApiClient()
+        stub.getShouldSucceed = false
+        let exp = expectation(description: "Completion block was called")
+        
+        try ProvideIdent(stub).listApplications(successHandler: { (result) in
+            self.unexpectedPass(exp)
+        }, failureHandler: { (response, result, error) in
+            self.expectedFail(exp)
+        })
+        
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                XCTAssertTrue(true, "There should not have been an error")
+                XCTAssertNotNil(stub.mostRecentRequest)
             }
         }
     }

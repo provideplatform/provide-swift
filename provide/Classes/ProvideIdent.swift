@@ -15,12 +15,14 @@ public class ProvideIdent: NSObject {
     // API Paths
     // TODO: Consider making these enum cases (a la Moya?)
     let authenticate = "authenticate"
-    let createAppication = "applications"
+    let applications = "applications"
     
     public init(_ client: ProvideApiClient = ProvideApiClient()) {
         self.api = client
         super.init()
     }
+    
+    // MARK: - Authentication Methods
     
     public func authenticate(email: String, password: String,
                              successHandler: @escaping PrvdApiSuccessHandler,
@@ -38,7 +40,7 @@ public class ProvideIdent: NSObject {
                     let topToken = deserialized["token"] as? [String : Any],
                     let tokenValue = topToken["token"] as? String {
                     KeychainService.shared.authToken = tokenValue
-                    successHandler(result as AnyObject)
+                    successHandler(tokenValue as AnyObject)
                 } else {
                     let error = ProvideError.unexpectedResponse(message: "Unable to extract authentication token from response.")
                     failureHandler(nil, result as AnyObject, error as NSError)
@@ -53,10 +55,12 @@ public class ProvideIdent: NSObject {
         }
     }
     
+    // MARK: - Application Methods
+    
     public func createApplication(name: String, networkId: String,
                                   successHandler: @escaping PrvdApiSuccessHandler,
                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
-        guard let url = api.buildIdentUrl(path: createAppication) else { throw ProvideError.invalidUrl(path: createAppication) }
+        guard let url = api.buildIdentUrl(path: applications) else { throw ProvideError.invalidUrl(path: applications) }
 
         let request = Alamofire.request(url,
                                         method: .post,
@@ -68,9 +72,34 @@ public class ProvideIdent: NSObject {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
                 if let deserialized = deserialized as? [String : Any], let appId = deserialized["id"] as? String {
                     KeychainService.shared.appId = appId
-                    successHandler(result as AnyObject)
+                    successHandler(deserialized as AnyObject)
                 } else {
-                    let error = ProvideError.unexpectedResponse(message: "Unable to extract authentication token from response.")
+                    let error = ProvideError.unexpectedResponse(message: "Unable to extract application ID from response.")
+                    failureHandler(nil, result as AnyObject, error as NSError)
+                }
+            } else {
+                let error = ProvideError.unexpectedResponse(message: "Response data was nil or not of type Data.")
+                failureHandler(nil, result as AnyObject, error as NSError)
+            }
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listApplications(successHandler: @escaping PrvdApiSuccessHandler,
+                                 failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: applications) else { throw ProvideError.invalidUrl(path: applications) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    successHandler(deserialized as AnyObject)
+                } else {
+                    let error = ProvideError.unexpectedResponse(message: "Unable to extract list of dapps from response.")
                     failureHandler(nil, result as AnyObject, error as NSError)
                 }
             } else {
