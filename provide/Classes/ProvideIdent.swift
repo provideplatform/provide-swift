@@ -16,6 +16,8 @@ public class ProvideIdent: NSObject {
     // TODO: Consider making these enum cases (a la Moya?)
     let authenticate = "authenticate"
     let applications = "applications"
+    let tokens = "tokens"
+    let users = "users"
     
     public init(_ client: ProvideApiClient = ProvideApiClient()) {
         self.api = client
@@ -61,7 +63,7 @@ public class ProvideIdent: NSObject {
                                   successHandler: @escaping PrvdApiSuccessHandler,
                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
         guard let url = api.buildIdentUrl(path: applications) else { throw ProvideError.invalidUrl(path: applications) }
-
+        
         let request = Alamofire.request(url,
                                         method: .post,
                                         parameters: ["name": name, "network_id": networkId],
@@ -106,6 +108,174 @@ public class ProvideIdent: NSObject {
                 let error = ProvideError.unexpectedResponse(message: "Response data was nil or not of type Data.")
                 failureHandler(nil, result as AnyObject, error as NSError)
             }
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func updateApplication(parameters: Parameters,
+                                  successHandler: @escaping PrvdApiSuccessHandler,
+                                  failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: applications) else { throw ProvideError.invalidUrl(path: applications) }
+        
+        let request = Alamofire.request(url,
+                                        method: .put,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.put(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchApplicationDetails(appId: String,
+                                        successHandler: @escaping PrvdApiSuccessHandler,
+                                        failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(applications)/\(appId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    // MARK: - Token Methods
+    
+    public func listApplicationTokens(appId: String,
+                                      successHandler: @escaping PrvdApiSuccessHandler,
+                                      failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(applications)/\(appId)/tokens"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listTokens(parameters: Parameters,
+                           successHandler: @escaping PrvdApiSuccessHandler,
+                           failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: tokens) else { throw ProvideError.invalidUrl(path: tokens) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchTokensDetails(tokenId: String,
+                                   successHandler: @escaping PrvdApiSuccessHandler,
+                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(tokens)/\(tokenId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func deleteToken(tokenId: String,
+                            successHandler: @escaping PrvdApiSuccessHandler,
+                            failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(tokens)/\(tokenId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .delete,
+                                        headers: api.headers())
+        api.delete(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    // MARK: - User Methods
+    
+    public func createUser(parameters: Parameters,
+                           successHandler: @escaping PrvdApiSuccessHandler,
+                           failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: users) else { throw ProvideError.invalidUrl(path: users) }
+        
+        let request = Alamofire.request(url,
+                                        method: .post,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.post(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func listUsers(successHandler: @escaping PrvdApiSuccessHandler,
+                          failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: users) else { throw ProvideError.invalidUrl(path: users) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchUserDetails(userId: String,
+                                 successHandler: @escaping PrvdApiSuccessHandler,
+                                 failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(users)/\(userId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.headers())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func updateUser(userId: String,
+                           parameters: Parameters, 
+                           successHandler: @escaping PrvdApiSuccessHandler,
+                           failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(users)/\(userId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .put,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.headers())
+        api.put(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
         }) { (response, result, error) in
             failureHandler(response, result, error)
         }
