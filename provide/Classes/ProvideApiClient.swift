@@ -70,10 +70,14 @@ open class ProvideApiClient: NSObject {
     }
     
     open func headers() -> HTTPHeaders { // [String : String]
-        return [
-            "user-agent" : "provide-swift client",
-            "authorization" : "bearer \(KeychainService.shared.authToken)"
-        ]
+        if let authToken = KeychainService.shared.authToken {
+            return [
+                "user-agent" : "provide-swift client",
+                "authorization" : "bearer \(authToken)"
+            ]
+        } else {
+            return ["user-agent" : "provide-swift client"]
+        }
     }
     
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UICKeyChainStore
 
-// TODO: bolster this; look at removing the 3rd party dependency.
+// TODO: bolster this; look at removing the 3rd party dependency (and its warnings).
 open class KeychainService {
     
     public static let shared = KeychainService()

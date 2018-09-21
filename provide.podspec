@@ -27,7 +27,7 @@ Provide Swift client library.
 
   s.ios.deployment_target = '10.3'
 
-  s.source_files = 'provide/Classes/**/*'
+  s.source_files = 'provide/Classes/**/*.swift'
   
   # s.resource_bundles = {
   #   'provide' => ['provide/Assets/*.png']
