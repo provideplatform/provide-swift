@@ -9,10 +9,9 @@ import Foundation
 import UICKeyChainStore
 
 // TODO: bolster this; look at removing the 3rd party dependency.
-// TODO: Add unit tests for this wrapper. 
-class KeychainService {
+open class KeychainService {
     
-    static let shared = KeychainService()
+    public static let shared = KeychainService()
     private let uicStore = UICKeyChainStore()
     
     private let authTokenKey = "auth-token"
@@ -35,7 +34,7 @@ class KeychainService {
         }
     }
     
-    var authToken: String? {
+    public var authToken: String? {
         get {
             if let token = cachedAuthToken {
                 return token
@@ -52,7 +51,7 @@ class KeychainService {
         }
     }
     
-    var appId: String? {
+    public var appId: String? {
         get {
             if let identifier = cachedAppId {
                 return identifier
@@ -69,7 +68,7 @@ class KeychainService {
         }
     }
     
-    var appApiToken: String? {
+    public var appApiToken: String? {
         get {
             if let token = cachedAppApiToken {
                 return token
@@ -86,7 +85,7 @@ class KeychainService {
         }
     }
     
-    var appWalletId: String? {
+    public var appWalletId: String? {
         get {
             if let identifier = cachedAppWalletId {
                 return identifier
@@ -103,7 +102,7 @@ class KeychainService {
         }
     }
     
-    func clearStoredUserData() {
+    public func clearStoredUserData() {
         authToken = nil
         appId = nil
         appApiToken = nil

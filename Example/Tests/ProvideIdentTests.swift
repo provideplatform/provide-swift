@@ -41,7 +41,7 @@ class ProvideIdentTests: XCTestCase {
                 XCTAssertTrue(true, "There should not have been an error")
                 XCTAssertNotNil(stub.mostRecentRequest)
                 XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(email))
-                // FIXME: KeychainService access issue: XCTAssertEqual(KeychainService.shared.authToken, theToken, "The token should have been persisted")
+                XCTAssertEqual(KeychainService.shared.authToken, theToken, "The token should have been persisted")
             }
         }
     }
