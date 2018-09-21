@@ -16,11 +16,13 @@ class KeychainService {
     private let uicStore = UICKeyChainStore()
     
     private let authTokenKey = "auth-token"
-    // NOTE: just supporting a single dapp's API token and wallet signing identity at a time for now. 
+    // NOTE: just supporting a single dapp's API token and wallet signing identity at a time for now.
+    private let appIdTokenKey = "app-identifier"
     private let appApiTokenKey = "api-token"
     private let appWalletIdKey = "wallet-identifier"
     
-    private var cachedAuthToken: String? // TODO: rename to authToken
+    private var cachedAuthToken: String?
+    private var cachedAppId: String?
     private var cachedAppApiToken: String?
     private var cachedAppWalletId: String?
     
@@ -50,6 +52,23 @@ class KeychainService {
         }
     }
     
+    var appId: String? {
+        get {
+            if let identifier = cachedAppId {
+                return identifier
+            } else if let appIdString = self[appIdTokenKey] {
+                cachedAppId = appIdString
+                return cachedAppId
+            } else {
+                return nil
+            }
+        }
+        set {
+            self[appIdTokenKey] = newValue
+            cachedAppId = nil
+        }
+    }
+    
     var appApiToken: String? {
         get {
             if let token = cachedAppApiToken {
@@ -69,8 +88,8 @@ class KeychainService {
     
     var appWalletId: String? {
         get {
-            if let walletId = cachedAppWalletId {
-                return walletId
+            if let identifier = cachedAppWalletId {
+                return identifier
             } else if let tokenString = self[appWalletIdKey] {
                 cachedAppWalletId = tokenString
                 return cachedAppWalletId
@@ -84,9 +103,9 @@ class KeychainService {
         }
     }
     
-    
     func clearStoredUserData() {
         authToken = nil
+        appId = nil
         appApiToken = nil
         appWalletId = nil
         

@@ -30,8 +30,7 @@ public class ProvideIdent: NSObject {
         let request = Alamofire.request(url,
                                         method: .post,
                                         parameters: ["email": email, "password": password],
-                                        encoding: JSONEncoding.prettyPrinted,
-                                        headers: nil)
+                                        encoding: JSONEncoding.prettyPrinted)
         api.post(request, successHandler: { (result) in
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
@@ -63,9 +62,21 @@ public class ProvideIdent: NSObject {
                                         method: .post,
                                         parameters: ["name": name, "network_id": networkId],
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: nil)
+                                        headers: api.headers())
         api.post(request, successHandler: { (result) in
-            successHandler(result)
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? [String : Any], let appId = deserialized["id"] as? String {
+                    KeychainService.shared.appId = appId
+                    successHandler(result as AnyObject)
+                } else {
+                    let error = ProvideError.unexpectedResponse(message: "Unable to extract authentication token from response.")
+                    failureHandler(nil, result as AnyObject, error as NSError)
+                }
+            } else {
+                let error = ProvideError.unexpectedResponse(message: "Response data was nil or not of type Data.")
+                failureHandler(nil, result as AnyObject, error as NSError)
+            }
         }) { (response, result, error) in
             failureHandler(response, result, error)
         }

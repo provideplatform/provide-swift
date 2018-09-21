@@ -65,10 +65,14 @@ class ProvideIdentTests: XCTestCase {
     
     // MARK: - Create Application Tests
     
-    func testCreateApplicatoinSuccess() throws {
+    func testCreateApplicationSuccess() throws {
         let name = "Created by a Unit Test"
         let networkId = "guid for a uuid"
+        let theAppId = "the-application-uuid"
+        let responseDict = ["id" : theAppId]
+        let responseData = try JSONSerialization.data(withJSONObject: responseDict, options: .prettyPrinted)
         let stub = StubApiClient()
+        stub.postSuccessResult = responseData as AnyObject
         let exp = expectation(description: "Completion block was called")
         
         try ProvideIdent(stub).createApplication(name: name, networkId: networkId, successHandler: { (result) in

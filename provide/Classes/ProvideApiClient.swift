@@ -68,11 +68,11 @@ open class ProvideApiClient: NSObject {
         return URL(string: path, relativeTo: baseUrl)
     }
     
-    // MARK: Private Methods
-    
-    // FIXME: implement this (tokens! in the Keychain?)
-    private func headers() -> Dictionary<String, String> {
-        return [:]
+    open func headers() -> HTTPHeaders { // [String : String]
+        return [
+            "user-agent" : "provide-swift client",
+            "authorization" : "bearer \(KeychainService.shared.authToken)"
+        ]
     }
     
 }
