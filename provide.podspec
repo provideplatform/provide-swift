@@ -45,4 +45,5 @@ Provide Swift client library.
   s.dependency 'AlamofireObjectMapper', '~> 5.0'
   s.dependency 'ObjectMapper', '~> 3.0'
   s.dependency 'JWTDecode', '~> 2.0'
+  s.dependency 'UICKeyChainStore', '~> 2.1'
 end
