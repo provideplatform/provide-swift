@@ -16,18 +16,18 @@ extension XCTestCase {
         expectation.fulfill()
     }
     
-    func unexpectedPass(_ expectation: XCTestExpectation) {
+    func unexpectedPass(_ expectation: XCTestExpectation, file: StaticString = #file, line: UInt = #line) {
         expectation.fulfill()
-        XCTFail("Request should have failed.")
+        XCTFail("Request should have failed", file: file, line: line)
     }
     
     func expectedFail(_ expectation: XCTestExpectation) {
         expectation.fulfill()
     }
     
-    func unexpectedFail(_ expectation: XCTestExpectation) {
+    func unexpectedFail(_ expectation: XCTestExpectation, file: StaticString = #file, line: UInt = #line) {
         expectation.fulfill()
-        XCTFail("Request should have passed.")
+        XCTFail("Request should have passed.", file: file, line: line)
     }
     
 }

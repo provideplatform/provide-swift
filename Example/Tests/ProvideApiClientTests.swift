@@ -35,11 +35,11 @@ class ProvideApiClientTests: XCTestCase {
     // MARK: - Helper Methods
     
     // Using the ident interface for now.
-    func performTestForBuildUrl(path: String, function: String = #function, line: Int = #line) {
+    func performTestForBuildUrl(path: String, file: StaticString = #file, line: UInt = #line) {
         let base = URL(string: "https://sub.domain.tld/")
-        XCTAssertNotNil(base)
+        XCTAssertNotNil(base, file: file, line: line)
         let result = ProvideApiClient().buildIdentUrl(path: path, baseUrl: base!)
-        XCTAssertEqual(result?.absoluteString, "\(base!)\(path)")
+        XCTAssertEqual(result?.absoluteString, "\(base!)\(path)", file: file, line: line)
     }
 
 }
