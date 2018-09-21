@@ -14,6 +14,7 @@ public typealias PrvdApiFailureHandler = (HTTPURLResponse?, AnyObject?, NSError?
 
 enum ProvideError: Error {
     case invalidUrl(path: String)
+    case unexpectedResponse(message: String)
 }
 
 open class ProvideApiClient: NSObject {

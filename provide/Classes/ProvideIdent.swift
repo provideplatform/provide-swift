@@ -33,8 +33,23 @@ public class ProvideIdent: NSObject {
                                         encoding: JSONEncoding.prettyPrinted,
                                         headers: nil)
         api.post(request, successHandler: { (result) in
-            successHandler(result)
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? [String : Any],
+                    let topToken = deserialized["token"] as? [String : Any],
+                    let tokenValue = topToken["token"] as? String {
+                    KeychainService.shared.authToken = tokenValue
+                    successHandler(result as AnyObject)
+                } else {
+                    let error = ProvideError.unexpectedResponse(message: "Unable to extract authentication token from response.")
+                    failureHandler(nil, result as AnyObject, error as NSError)
+                }
+            } else {
+                let error = ProvideError.unexpectedResponse(message: "Response data was nil or not of type Data.")
+                failureHandler(nil, result as AnyObject, error as NSError)
+            }
         }) { (response, result, error) in
+            KeychainService.shared.clearStoredUserData()
             failureHandler(response, result, error)
         }
     }

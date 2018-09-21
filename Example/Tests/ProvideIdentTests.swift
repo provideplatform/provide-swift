@@ -15,7 +15,11 @@ class ProvideIdentTests: XCTestCase {
     
     func testAuthenticateSuccess() throws {
         let email = "valid@email.com"
+        let theToken = "the-authentication.token"
+        let responseDict = ["token" : ["token" : theToken]] // only a partial representation
+        let responseData = try JSONSerialization.data(withJSONObject: responseDict, options: .prettyPrinted)
         let stub = StubApiClient()
+        stub.postSuccessResult = responseData as AnyObject
         let exp = expectation(description: "Completion block was called")
         
         try ProvideIdent(stub).authenticate(email: email, password: "Soop3rSuhkyuur", successHandler: { (result) in
@@ -31,6 +35,7 @@ class ProvideIdentTests: XCTestCase {
                 XCTAssertTrue(true, "There should not have been an error")
                 XCTAssertNotNil(stub.mostRecentRequest)
                 XCTAssertTrue(stub.mostRecentRequest!.debugDescription.contains(email))
+                // FIXME: KeychainService access issue: XCTAssertEqual(KeychainService.shared.authToken, theToken, "The token should have been persisted")
             }
         }
     }
