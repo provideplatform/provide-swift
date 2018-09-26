@@ -69,7 +69,15 @@ open class ProvideApiClient: NSObject {
         return URL(string: path, relativeTo: baseUrl)
     }
     
-    open func headers() -> HTTPHeaders { // [String : String]
+    open func headers(apiToken: String = "") -> HTTPHeaders { // [String : String]
+        // Use API token, if one is given
+        if apiToken.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+            return [
+                "user-agent" : "provide-swift client",
+                "authorization" : "bearer \(apiToken)"
+            ]
+        }
+        // Use auth token as default
         if let authToken = KeychainService.shared.authToken {
             return [
                 "user-agent" : "provide-swift client",
