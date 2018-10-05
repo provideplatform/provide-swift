@@ -18,6 +18,13 @@ enum ProvideError: Error {
 
 open class ProvideApiClient: NSObject {
     
+    private var apiToken: String = ""
+    
+    public init(_ apiToken: String = "") {
+        self.apiToken = apiToken
+        super.init()
+    }
+    
     open func get(_ request: DataRequest,
                   successHandler: @escaping PrvdApiSuccessHandler,
                   failureHandler: @escaping PrvdApiFailureHandler) {
@@ -69,23 +76,38 @@ open class ProvideApiClient: NSObject {
         return URL(string: path, relativeTo: baseUrl)
     }
     
-    open func headers(apiToken: String = "") -> HTTPHeaders { // [String : String]
-        // Use API token, if one is given
-        if apiToken.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-            return [
-                "user-agent" : "provide-swift client",
-                "authorization" : "bearer \(apiToken)"
-            ]
-        }
-        // Use auth token as default
+    open func authHeaders() -> HTTPHeaders? { // [String : String]
         if let authToken = KeychainService.shared.authToken {
             return [
                 "user-agent" : "provide-swift client",
                 "authorization" : "bearer \(authToken)"
             ]
         } else {
-            return ["user-agent" : "provide-swift client"]
+            return [
+                "user-agent" : "provide-swift client",
+                "token-state" : "tokens missing"
+            ]
         }
+    }
+    
+    open func apiHeaders(overrideApiToken: String = "") -> HTTPHeaders? {
+        // Use method-injected API token, if one is given
+        if apiToken.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+            return [
+                "user-agent" : "provide-swift client",
+                "authorization" : "bearer \(apiToken)"
+            ]
+        }
+        // Use constructor-injected API token, if present
+        if self.apiToken.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+            return [
+                "user-agent" : "provide-swift client",
+                "authorization" : "bearer \(self.apiToken)"
+            ]
+        }
+        // else
+        print("No API token available for header! Returning nil.")
+        return nil
     }
     
 }

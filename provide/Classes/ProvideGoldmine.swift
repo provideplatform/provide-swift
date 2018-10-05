@@ -38,7 +38,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -54,7 +54,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -71,7 +71,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -90,7 +90,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -106,7 +106,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -123,7 +123,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -139,7 +139,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .delete,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.delete(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -158,7 +158,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -174,7 +174,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -191,7 +191,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -210,7 +210,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -229,7 +229,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -246,7 +246,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -262,7 +262,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -281,7 +281,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -298,7 +298,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -314,7 +314,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -333,7 +333,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -350,7 +350,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -366,7 +366,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -385,7 +385,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -402,7 +402,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -418,7 +418,7 @@ public class ProvideGoldmine: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -435,7 +435,7 @@ public class ProvideGoldmine: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.apiHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -460,7 +460,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -476,7 +476,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -493,7 +493,7 @@ extension ProvideGoldmine {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -512,7 +512,7 @@ extension ProvideGoldmine {
                                         method: .put,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.put(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -534,7 +534,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -553,7 +553,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -572,7 +572,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -591,7 +591,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -610,7 +610,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -629,7 +629,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -648,7 +648,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -667,7 +667,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -683,7 +683,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -700,7 +700,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -717,7 +717,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -738,7 +738,7 @@ extension ProvideGoldmine {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -755,7 +755,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -774,7 +774,7 @@ extension ProvideGoldmine {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -791,7 +791,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -808,7 +808,7 @@ extension ProvideGoldmine {
         
         let request = Alamofire.request(url,
                                         method: .delete,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.delete(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in

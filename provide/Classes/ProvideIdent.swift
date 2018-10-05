@@ -34,7 +34,9 @@ public class ProvideIdent: NSObject {
         let request = Alamofire.request(url,
                                         method: .post,
                                         parameters: ["email": email, "password": password],
-                                        encoding: JSONEncoding.prettyPrinted)
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: ["user-agent" : "provide-swift client"])
+        // TODO: document no headers?
         api.post(request, successHandler: { (result) in
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
@@ -68,7 +70,7 @@ public class ProvideIdent: NSObject {
                                         method: .post,
                                         parameters: ["name": name, "network_id": networkId],
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.post(request, successHandler: { (result) in
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
@@ -94,7 +96,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
@@ -122,7 +124,7 @@ public class ProvideIdent: NSObject {
                                         method: .put,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.put(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -138,7 +140,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -156,7 +158,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -173,7 +175,7 @@ public class ProvideIdent: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -189,7 +191,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -205,7 +207,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .delete,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.delete(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -224,7 +226,7 @@ public class ProvideIdent: NSObject {
                                         method: .post,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.post(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -238,7 +240,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -254,7 +256,7 @@ public class ProvideIdent: NSObject {
         
         let request = Alamofire.request(url,
                                         method: .get,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
@@ -273,7 +275,7 @@ public class ProvideIdent: NSObject {
                                         method: .put,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.headers())
+                                        headers: api.authHeaders())
         api.put(request, successHandler: { (result) in
             successHandler(result as AnyObject)
         }) { (response, result, error) in
