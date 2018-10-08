@@ -38,10 +38,16 @@ class ProvideApiClientTests: XCTestCase {
                                 query: String? = nil,
                                 scheme: String = scheme,
                                 host: String = host,
+                                port: Int = 80,
                                 api: String = api,
                                 file: StaticString = #file,
                                 line: UInt = #line) {
-        let result = ProvideApiClient().buildIdentUrl(path: path, queryString: query, baseScheme: scheme, baseHost: host, apiBasePath: api)
+        let result = ProvideApiClient().buildIdentUrl(path: path,
+                                                      queryString: query,
+                                                      baseScheme: scheme,
+                                                      baseHost: host,
+                                                      hostPort: port,
+                                                      apiBasePath: api)
         XCTAssertNotNil(result, file: file, line: line)
         // Note: we are only encode-handling for path and query string in these tests.
         var encodedPath = path
@@ -54,7 +60,7 @@ class ProvideApiClientTests: XCTestCase {
             XCTAssertNotNil(queryPart)
             queryString = "?\(queryPart)"
         }
-        let expected = "\(scheme)://\(host)\(api)\(encodedPath)\(queryString)"
+        let expected = "\(scheme)://\(host):\(port)\(api)\(encodedPath)\(queryString)"
         XCTAssertEqual(result!.absoluteString, expected, file: file, line: line)
     }
 

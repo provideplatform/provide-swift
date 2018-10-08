@@ -98,7 +98,12 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "prvd_ident_host"
-            value = "muncmac.local:8080"
+            value = "muncmac.local"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "prvd_ident_port"
+            value = "8080"
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
@@ -108,7 +113,12 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "prvd_goldmine_host"
-            value = "muncmac.local:8081"
+            value = "muncmac.local"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "prvd_goldmine_port"
+            value = "8081"
             isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>

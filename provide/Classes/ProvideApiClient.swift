@@ -19,10 +19,12 @@ public typealias PrvdApiFailureHandler = (HTTPURLResponse?, AnyObject?, NSError?
  */
 enum ApiEnvironmentVariables: String {
     case identScheme = "prvd_ident_scheme"
-    case goldmineScheme = "prvd_goldmine_scheme"
     case identHost = "prvd_ident_host"
-    case goldmineHost = "prvd_goldmine_host"
+    case identPort = "prvd_ident_port"
     case identVersion = "prvd_ident_version"
+    case goldmineScheme = "prvd_goldmine_scheme"
+    case goldmineHost = "prvd_goldmine_host"
+    case goldminePort = "prvd_goldmine_port"
     case goldmineVersion = "prvd_goldmine_version"
 }
 
@@ -39,17 +41,33 @@ open class ProvideApiClient: NSObject {
     private var goldmineScheme = "https"
     private var identHost = "ident.provide.services"
     private var goldmineHost = "goldmine.provide.services"
+    private var identPort = 443
+    private var goldminePort = 443
     private var identVersion = "v1"
     private var goldmineVersion = "v1"
     
     public init(_ apiToken: String = "") {
         self.apiToken = apiToken
         // Check for environment variable overrides
+        if let identProtocol = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.identScheme.rawValue] {
+            identScheme = identProtocol
+        }
+        if let goldmineProtocol = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.goldmineScheme.rawValue] {
+            goldmineScheme = goldmineProtocol
+        }
         if let identBase = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.identHost.rawValue] {
             identHost = identBase
         }
         if let goldmineBase = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.goldmineHost.rawValue] {
             goldmineHost = goldmineBase
+        }
+        if let identPortString = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.identPort.rawValue],
+            let identPortNumber = Int(identPortString) {
+            identPort = identPortNumber
+        }
+        if let goldminePortString = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.goldminePort.rawValue],
+            let goldminePortNumber = Int(goldminePortString) {
+            goldminePort = goldminePortNumber
         }
         super.init()
     }
@@ -91,7 +109,7 @@ open class ProvideApiClient: NSObject {
     // MARK: - Helper Methods
     
     
-    open func buildIdentUrl(path: String, queryString: String? = nil, baseScheme: String? = nil, baseHost: String? = nil, apiBasePath: String? = nil) -> URL? {
+    open func buildIdentUrl(path: String, queryString: String? = nil, baseScheme: String? = nil, baseHost: String? = nil, hostPort: Int? = nil, apiBasePath: String? = nil) -> URL? {
         var url = URLComponents()
         if let baseScheme = baseScheme, let baseHost = baseHost {
             url.scheme = baseScheme
@@ -99,6 +117,11 @@ open class ProvideApiClient: NSObject {
         } else {
             url.scheme = identScheme
             url.host = identHost
+        }
+        if let hostPort = hostPort {
+            url.port = hostPort
+        } else if identPort != 80 && identPort != 443 {
+            url.port = identPort
         }
         if let apiBasePath = apiBasePath {
             url.path = "\(apiBasePath)\(path)"
@@ -111,7 +134,7 @@ open class ProvideApiClient: NSObject {
         return url.url
     }
     
-    open func buildGoldmineUrl(path: String, queryString: String? = nil, baseScheme: String? = nil, baseHost: String? = nil, apiBasePath: String? = nil) -> URL? {
+    open func buildGoldmineUrl(path: String, queryString: String? = nil, baseScheme: String? = nil, baseHost: String? = nil, hostPort: Int? = nil, apiBasePath: String? = nil) -> URL? {
         var url = URLComponents()
         if let baseScheme = baseScheme, let baseHost = baseHost {
             url.scheme = baseScheme
@@ -119,6 +142,11 @@ open class ProvideApiClient: NSObject {
         } else {
             url.scheme = goldmineScheme
             url.host = goldmineHost
+        }
+        if let hostPort = hostPort {
+            url.port = hostPort
+        } else if goldminePort != 80 && goldminePort != 443 {
+            url.port = goldminePort
         }
         if let apiBasePath = apiBasePath {
             url.path = "\(apiBasePath)\(path)"
