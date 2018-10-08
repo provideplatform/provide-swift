@@ -11,6 +11,19 @@ import Alamofire
 public typealias PrvdApiSuccessHandler = (AnyObject?) -> Void
 public typealias PrvdApiFailureHandler = (HTTPURLResponse?, AnyObject?, NSError?) -> Void
 
+/**
+ * Override in your Xcode scheme's Run arguments, if needed.
+ *
+ * Value should include protocol, host and optionally port for the microservice host keys.
+ * Hosts must not include trailing slash nor any path.
+ */
+enum ApiEnvironmentVariables: String {
+    case identHost = "prvd_ident_host"
+    case goldmineHost = "prvd_goldmine_host"
+    case identVersion = "prvd_ident_version"
+    case goldmineVersion = "prvd_goldmine_version"
+}
+
 enum ProvideError: Error {
     case invalidUrl(path: String)
     case unexpectedResponse(message: String)
@@ -19,11 +32,25 @@ enum ProvideError: Error {
 open class ProvideApiClient: NSObject {
     
     private var apiToken: String = ""
+    // Default microservice values
+    private var identHost = "https://ident.provide.services"
+    private var goldmineHost = "https://goldmine.provide.services"
+    private var identVersion = "v1"
+    private var goldmineVersion = "v1"
     
     public init(_ apiToken: String = "") {
         self.apiToken = apiToken
+        // Check for environment variable overrides
+        if let identBase = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.identHost.rawValue] {
+            identHost = identBase
+        }
+        if let goldmineBase = ProcessInfo.processInfo.environment[ApiEnvironmentVariables.goldmineHost.rawValue] {
+            goldmineHost = goldmineBase
+        }
         super.init()
     }
+    
+    // MARK: - HTTP Verb Methods
     
     open func get(_ request: DataRequest,
                   successHandler: @escaping PrvdApiSuccessHandler,
@@ -59,15 +86,24 @@ open class ProvideApiClient: NSObject {
     
     // MARK: - Helper Methods
     
-    /**
-     * Note: these do *not* currently handle URL encoding of the given `path`.
-     */
-    open func buildIdentUrl(path: String, baseUrl: URL = URL(string: "https://ident.provide.services/api/v1/")!) -> URL? {
-        return buildUrl(path: path, baseUrl: baseUrl)
+    open func buildIdentUrl(path: String, baseUrl: URL? = nil) -> URL? {
+        // Bang this since an invalid host is a non-starter
+        var hostBase = URL(string: "\(identHost)/api/\(identVersion)/")!
+        if let baseUrl = baseUrl {
+            // local override
+            hostBase = baseUrl
+        }
+        return buildUrl(path: path, baseUrl: hostBase)
     }
     
-    open func buildGoldmineUrl(path: String, baseUrl: URL = URL(string: "https://goldmine.provide.services/api/v1/")!) -> URL? {
-        return buildUrl(path: path, baseUrl: baseUrl)
+    open func buildGoldmineUrl(path: String, baseUrl: URL? = nil) -> URL? {
+        // Bang this since an invalid host is a non-starter
+        var hostBase = URL(string: "\(goldmineHost)/api/\(goldmineVersion)/")!
+        if let baseUrl = baseUrl {
+            // local override
+            hostBase = baseUrl
+        }
+        return buildUrl(path: path, baseUrl: hostBase)
     }
     
     private func buildUrl(path: String, baseUrl: URL) -> URL? {
