@@ -13,14 +13,14 @@ public class ProvideGoldmine: NSObject {
     private let api: ProvideApiClient
     
     // API Paths
-    let bridges = "bridges"
-    let connectors = "connectors"
-    let contracts = "contracts"
-    let networks = "networks"
-    let oracles = "oracles"
-    let tokens = "tokens"
-    let transactions = "transactions"
-    let wallets = "wallets"
+    let bridges = "/bridges"
+    let connectors = "/connectors"
+    let contracts = "/contracts"
+    let networks = "/networks"
+    let oracles = "/oracles"
+    let tokens = "/tokens"
+    let transactions = "/transactions"
+    let wallets = "/wallets"
     
     public init(_ client: ProvideApiClient = ProvideApiClient()) {
         self.api = client

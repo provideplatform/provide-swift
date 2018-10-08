@@ -14,10 +14,10 @@ public class ProvideIdent: NSObject {
     
     // API Paths
     // SUGGEST: Consider making these enum cases (a la Moya?)
-    let authenticate = "authenticate"
-    let applications = "applications"
-    let tokens = "tokens"
-    let users = "users"
+    let authenticate = "/authenticate"
+    let applications = "/applications"
+    let tokens = "/tokens"
+    let users = "/users"
     
     public init(_ client: ProvideApiClient = ProvideApiClient()) {
         self.api = client
