@@ -18,6 +18,8 @@ public typealias PrvdApiFailureHandler = (HTTPURLResponse?, AnyObject?, NSError?
  * Hosts must not include trailing slash nor any path.
  */
 enum ApiEnvironmentVariables: String {
+    case identScheme = "prvd_ident_scheme"
+    case goldmineScheme = "prvd_goldmine_scheme"
     case identHost = "prvd_ident_host"
     case goldmineHost = "prvd_goldmine_host"
     case identVersion = "prvd_ident_version"
@@ -32,9 +34,11 @@ enum ProvideError: Error {
 open class ProvideApiClient: NSObject {
     
     private var apiToken: String = ""
-    // Default microservice values
-    private var identHost = "https://ident.provide.services"
-    private var goldmineHost = "https://goldmine.provide.services"
+    // Microservice defaults (production)
+    private var identScheme = "https"
+    private var goldmineScheme = "https"
+    private var identHost = "ident.provide.services"
+    private var goldmineHost = "goldmine.provide.services"
     private var identVersion = "v1"
     private var goldmineVersion = "v1"
     
@@ -86,30 +90,45 @@ open class ProvideApiClient: NSObject {
     
     // MARK: - Helper Methods
     
-    open func buildIdentUrl(path: String, baseUrl: URL? = nil) -> URL? {
-        // Bang this since an invalid host is a non-starter
-        var hostBase = URL(string: "\(identHost)/api/\(identVersion)/")!
-        if let baseUrl = baseUrl {
-            // local override
-            hostBase = baseUrl
+    
+    open func buildIdentUrl(path: String, queryString: String? = nil, baseScheme: String? = nil, baseHost: String? = nil, apiBasePath: String? = nil) -> URL? {
+        var url = URLComponents()
+        if let baseScheme = baseScheme, let baseHost = baseHost {
+            url.scheme = baseScheme
+            url.host = baseHost
+        } else {
+            url.scheme = identScheme
+            url.host = identHost
         }
-        return buildUrl(path: path, baseUrl: hostBase)
+        if let apiBasePath = apiBasePath {
+            url.path = "\(apiBasePath)\(path)"
+        } else {
+            url.path = "/api/\(identVersion)\(path)"
+        }
+        if let queryString = queryString {
+            url.query = queryString
+        }
+        return url.url
     }
     
-    open func buildGoldmineUrl(path: String, baseUrl: URL? = nil) -> URL? {
-        // Bang this since an invalid host is a non-starter
-        var hostBase = URL(string: "\(goldmineHost)/api/\(goldmineVersion)/")!
-        if let baseUrl = baseUrl {
-            // local override
-            hostBase = baseUrl
+    open func buildGoldmineUrl(path: String, queryString: String? = nil, baseScheme: String? = nil, baseHost: String? = nil, apiBasePath: String? = nil) -> URL? {
+        var url = URLComponents()
+        if let baseScheme = baseScheme, let baseHost = baseHost {
+            url.scheme = baseScheme
+            url.host = baseHost
+        } else {
+            url.scheme = goldmineScheme
+            url.host = goldmineHost
         }
-        return buildUrl(path: path, baseUrl: hostBase)
-    }
-    
-    private func buildUrl(path: String, baseUrl: URL) -> URL? {
-        // TODO: guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
-        
-        return URL(string: path, relativeTo: baseUrl)
+        if let apiBasePath = apiBasePath {
+            url.path = "\(apiBasePath)\(path)"
+        } else {
+            url.path = "/api/\(goldmineVersion)\(path)"
+        }
+        if let queryString = queryString {
+            url.query = queryString
+        }
+        return url.url
     }
     
     open func authHeaders() -> HTTPHeaders? { // [String : String]
