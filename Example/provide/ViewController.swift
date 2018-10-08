@@ -10,76 +10,215 @@ import UIKit
 import provide
 
 class ViewController: UIViewController {
+    
+    var networkId: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        login()
+        if let storedNetworkId = UserDefaults.standard.object(forKey: networkIdKey) as? String {
+            networkId = storedNetworkId
+        }
+        getApplications()
     }
     
     // MARK: - Private Methods
     
-    private func doEverythingElse() {
-        processTransactions()
-        executeContract()
-    }
-    
-    private func login() {
-        // --------------------------------------------
-        // NOTE: Replace these with your own credentials.
-        //       Go to https://console.provide.services/#/signup if you need an account.
-        let email = "YOUR_PROVIDE_EMAIL_ADRESS"
-        let password = "YOUR_PROVIDE_PASSWORD"
-        // NOTE: Do _NOT_ commit your credentials.
-        // --------------------------------------------
-        performAuthentication(email: email, password: password)
-    }
-    
-    private func performAuthentication(email: String, password: String) {
-        try? ProvideIdent().authenticate(email: email,
-                                         password: password,
-                                         successHandler:
-            { [weak self] (result) in
-                if let authToken = result as? String {
-                    print("PRVD: Acquired auth token")
-                    KeychainService.shared.authToken = authToken
-                    
-                    self?.doEverythingElse()
-                    
+    private func getApplications() {
+        try? ProvideIdent().listApplications(successHandler: { [weak self] (result) in
+            if let result = result as? Array<[String : Any]> {
+                print("PRVD: This network has \(result.count) applications")
+                print("PRVD: first application: \(result.first!)")
+                if let app = result.first, let appId = app["id"] as? String {
+                    print("PRVD: Storing application ID: \(appId)")
+                    UserDefaults.standard.set(appId, forKey: applicationIdKey)
+                    self?.getAppApiTokens()
                 } else {
-                    print("PRVD: Unexpected result = \(String(describing: result))")
+                    print("PRVD: Unable to parse out the first application")
                 }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
         }) { (response, result, error) in
             print("PRVD: Error = \(String(describing: error))")
         }
     }
     
-    private func processTransactions() {
-        let networkId = "024ff1ef-7369-4dee-969c-1918c6edb5d4"
+    private func getAppApiTokens() {
+        guard let appId = UserDefaults.standard.object(forKey: applicationIdKey) as? String else { return }
+        
+        try? ProvideIdent().listApplicationTokens(appId: appId, successHandler: { [weak self] (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    print("PRVD: This app has \(deserialized.count) api tokens")
+                    if let tokenDict = deserialized.first, let token = tokenDict["token"] as? String {
+                        print("PRVD: Storing application API token: \(token)")
+                        KeychainService.shared.appApiToken = token
+                        self?.doEverythingElse()
+                    } else {
+                        print("PRVD: Unable to parse out the first application")
+                    }
+                } else {
+                    print("PRVD: Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
+            print("PRVD: Error = \(String(describing: error))")
+        }
+    }
+    
+    private func doEverythingElse() {
+//        processNetworkStatus()
+        processNetworkTokens()
+        processNetworkTransactions()
+        processNetworkNodes()
+        /** 501: Not Implemented:
+        processNetworkBlocks()
+        processNetworkBridges()
+        processNetworkOracles()
+        */
+//        executeContract()
+    }
+    
+    private func processNetworkStatus() {
+        try? ProvideGoldmine(apiClient()).fetchNetworkStatus(networkId: networkId, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? [String : Any] {
+                    print("PRVD: (\(#function)) This network status = \(deserialized)")
+                } else {
+                    print("PRVD: (\(#function)) Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: (\(#function)) Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
+            print("PRVD: \(#file):\(#line) \(#function) \nError = \(String(describing: error)) " +
+                "\nResponse = \(String(describing: response)) \nResult = \(String(describing: result))")
+        }
+    }
+    
+    
+    private func processNetworkTransactions() {
         let params = [String : Any]()
-        try? ProvideGoldmine().listNetworkTransactions(networkId: networkId, parameters: params, successHandler: { (result) in
+        try? ProvideGoldmine(apiClient()).listNetworkTransactions(networkId: networkId, parameters: params, successHandler: { (result) in
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
                 if let deserialized = deserialized as? Array<[String : Any]> {
                     print("PRVD: This network has \(deserialized.count) transactions")
                 } else {
-                    print("PRVD: Unexpected data result = \(result)")
+                    print("PRVD: Unexpected result = \(result)")
                 }
             } else {
-                print("PRVD: Unexpected non-data result = \(String(describing: result))")
+                print("PRVD: Unexpected data result = \(String(describing: result))")
             }
-        }) { (respose, result, error) in
+        }) { (response, result, error) in
+            print("PRVD: Error = \(String(describing: error))")
+        }
+    }
+    
+    private func processNetworkTokens() {
+        let params = [String : Any]()
+        try? ProvideGoldmine(apiClient()).listNetworkTokens(networkId: networkId, parameters: params, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    print("PRVD: This network has \(deserialized.count) tokens")
+                } else {
+                    print("PRVD: Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
+            print("PRVD: Error = \(String(describing: error))")
+        }
+    }
+    
+    private func processNetworkNodes() {
+        let params = [String : Any]()
+        try? ProvideGoldmine(apiClient()).listNetworkNodes(networkId: networkId, parameters: params, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    print("PRVD: This network has \(deserialized.count) nodes")
+                } else {
+                    print("PRVD: Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
+            print("PRVD: Error = \(String(describing: error))")
+        }
+    }
+    
+    private func processNetworkBlocks() {
+        let params = [String : Any]()
+        try? ProvideGoldmine(apiClient()).listNetworkBlocks(networkId: networkId, parameters: params, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    print("PRVD: This network has \(deserialized.count) blocks")
+                } else {
+                    print("PRVD: Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
+            print("PRVD: Error = \(String(describing: error))")
+        }
+    }
+    
+    private func processNetworkBridges() {
+        let params = [String : Any]()
+        try? ProvideGoldmine(apiClient()).listNetworkBridges(networkId: networkId, parameters: params, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    print("PRVD: This network has \(deserialized.count) bridges")
+                } else {
+                    print("PRVD: Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
+            print("PRVD: Error = \(String(describing: error))")
+        }
+    }
+    
+    private func processNetworkOracles() {
+        let params = [String : Any]()
+        try? ProvideGoldmine(apiClient()).listNetworkOracles(networkId: networkId, parameters: params, successHandler: { (result) in
+            if let result = result as? Data {
+                let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
+                if let deserialized = deserialized as? Array<[String : Any]> {
+                    print("PRVD: This network has \(deserialized.count) oracles")
+                } else {
+                    print("PRVD: Unexpected result = \(result)")
+                }
+            } else {
+                print("PRVD: Unexpected data result = \(String(describing: result))")
+            }
+        }) { (response, result, error) in
             print("PRVD: Error = \(String(describing: error))")
         }
     }
     
     private func executeContract() {
-        let params: [String : Any] = ["walletId" : "45951aca-d420-4464-989a-3483b4878098", // "d3982e7c-3739-413c-9638-7fc9b33b75a2",
-                                      "method" : "Transfer",
-                                      "value" : 0,
-                                      "params" : ["what", "are", "these?", "qwerty", "dvorak", "colemak", "foo", "bar", "baz", 42, 123]]
-        try? ProvideGoldmine().executeContract(
-            contractId: "a6f28e8f-a681-4264-a53f-305755a380e6", // "878954fb-d676-4809-8f95-67a2a8d483a3",
+        let params: [String : Any] = [
+            "walletId" : "your-wallet-id",
+            "method" : "nameOfFunctionInYourContract",
+            "value" : 0,
+            "params" : ["the", "arguments", "to", "your", "specified", "contract", "method"]
+        ]
+        try? ProvideGoldmine(apiClient()).executeContract(
+            contractId: "your-contract-id",
             parameters: params,
             successHandler: { (result) in
                 if let result = result as? Data {
@@ -87,14 +226,20 @@ class ViewController: UIViewController {
                     if let deserialized = deserialized as? [String : Any] {
                         print("PRVD: contract execution result = \(deserialized)")
                     } else {
-                        print("PRVD: Unexpected data result = \(result)")
+                        print("PRVD: Unexpected result = \(result)")
                     }
                 } else {
-                    print("PRVD: Unexpected non-data result = \(String(describing: result))")
+                    print("PRVD: Unexpected data result = \(String(describing: result))")
                 }
         }, failureHandler: { (response, result, error) in
             print("PRVD: Error = \(String(describing: error))")
         })
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func apiClient() -> ProvideApiClient {
+        return ProvideApiClient(KeychainService.shared.appApiToken!)
     }
 
 }
