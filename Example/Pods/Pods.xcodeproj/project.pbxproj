@@ -60,7 +60,7 @@
 		88C6379AF28A81117F0EBD54892436C3 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52B95EB41BA2CBFB6790666055F2 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		918D55F16814247D5D0D74FC75B48FBE /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE623FAFC6C57E2A40FCD3E2FBB826 /* Validation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		94828C1279720D61CE09868770500C9C /* provide-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 56A616338A51208938DA2E331D549A33 /* provide-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		984214A7EFC2BCA77FA7625414DE8517 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C8152338659DFC839A2958CB411D /* KeychainService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		984214A7EFC2BCA77FA7625414DE8517 /* ProvideKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C8152338659DFC839A2958CB411D /* ProvideKeychainService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9C3DD71E9840DCAB5393F4E5566496F6 /* JWTDecode-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 61EF51CB090C7CC6860A492F7996D51B /* JWTDecode-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C442730C6440E7F26B79A245B0801BE /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E8BEF21245627E663CC5C8757127E /* TransformOperators.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9F1AFBA16D6794C2EF6780AADE25AF62 /* KTApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C424F840DEC01A4378F3989AFBEEB /* KTApiService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -349,7 +349,7 @@
 		EC3A3D953CEBAA4F82A958427EB6E3E4 /* provide.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = provide.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EDEF60CB3C5C670999D8CF6D7C95E1E6 /* Pods-provide_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-provide_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EEAD56D4A779EFCBD5F158F9E47ECAA4 /* provide-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "provide-dummy.m"; sourceTree = "<group>"; };
-		F085C8152338659DFC839A2958CB411D /* KeychainService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = provide/Classes/KeychainService.swift; sourceTree = "<group>"; };
+		F085C8152338659DFC839A2958CB411D /* ProvideKeychainService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProvideKeychainService.swift; path = provide/Classes/ProvideKeychainService.swift; sourceTree = "<group>"; };
 		F3F0A100CCD2E3BFB3F80C647B0376AF /* Pods-provide_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-provide_Example-resources.sh"; sourceTree = "<group>"; };
 		F63328C8FCAF5F3CC0DC0038D0A7497B /* EnumOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumOperators.swift; path = Sources/EnumOperators.swift; sourceTree = "<group>"; };
 		F8B1C7185231CE622359149146621060 /* Mappable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mappable.swift; path = Sources/Mappable.swift; sourceTree = "<group>"; };
@@ -601,10 +601,10 @@
 		6FE256E4C973463FE7E5C31BB5EBE01C /* provide */ = {
 			isa = PBXGroup;
 			children = (
-				F085C8152338659DFC839A2958CB411D /* KeychainService.swift */,
 				8C0B7B7D6F87743B975EDF87569E729B /* ProvideApiClient.swift */,
 				AFF3010581FC3FD8483DF17EF50AB1E9 /* ProvideGoldmine.swift */,
 				8E87D7370A794417300280BB157E1497 /* ProvideIdent.swift */,
+				F085C8152338659DFC839A2958CB411D /* ProvideKeychainService.swift */,
 				A6358C04FAE209A84891169E3460BB8A /* Base */,
 				914AB64EBC669690A8B862C7DF03AD63 /* Pod */,
 				FD5035C8A8DEEAC676877957823C0E25 /* Support Files */,
@@ -1234,7 +1234,7 @@
 				6B039E6D976A704D6797C1BF9DC012B4 /* DateExtensions.swift in Sources */,
 				C78048916343D6702B6F051AA7509493 /* DateFormatterExtensions.swift in Sources */,
 				0925EC18330DB7296BE8E70E71C91C74 /* DictionaryExtensions.swift in Sources */,
-				984214A7EFC2BCA77FA7625414DE8517 /* KeychainService.swift in Sources */,
+				984214A7EFC2BCA77FA7625414DE8517 /* ProvideKeychainService.swift in Sources */,
 				9F1AFBA16D6794C2EF6780AADE25AF62 /* KTApiService.swift in Sources */,
 				BF1B175BE0852EC237FD72221AFF4173 /* KTError.swift in Sources */,
 				E2E64FF5B396907AD0F121857B14CA86 /* KTFunctions.swift in Sources */,

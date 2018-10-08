@@ -1,5 +1,5 @@
 //
-//  KeychainService.swift
+//  ProvideKeychainService.swift
 //  provide
 //
 //  Created by Kevin Munc on 09/20/18.
@@ -9,9 +9,9 @@ import Foundation
 import UICKeyChainStore
 
 // TODO: bolster this; look at removing the 3rd party dependency (and its warnings).
-open class KeychainService {
+open class ProvideKeychainService {
     
-    public static let shared = KeychainService()
+    public static let shared = ProvideKeychainService()
     private let uicStore = UICKeyChainStore()
     
     private let authTokenKey = "auth-token"

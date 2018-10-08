@@ -36,14 +36,13 @@ public class ProvideIdent: NSObject {
                                         parameters: ["email": email, "password": password],
                                         encoding: JSONEncoding.prettyPrinted,
                                         headers: ["user-agent" : "provide-swift client"])
-        // TODO: document no headers?
         api.post(request, successHandler: { (result) in
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
                 if let deserialized = deserialized as? [String : Any],
                     let topToken = deserialized["token"] as? [String : Any],
                     let tokenValue = topToken["token"] as? String {
-                    KeychainService.shared.authToken = tokenValue
+                    ProvideKeychainService.shared.authToken = tokenValue
                     successHandler(tokenValue as AnyObject)
                 } else {
                     let error = ProvideError.unexpectedResponse(message: "Unable to extract authentication token from response.")
@@ -54,7 +53,7 @@ public class ProvideIdent: NSObject {
                 failureHandler(nil, result as AnyObject, error as NSError)
             }
         }) { (response, result, error) in
-            KeychainService.shared.clearStoredUserData()
+            ProvideKeychainService.shared.clearStoredUserData()
             failureHandler(response, result, error)
         }
     }
@@ -75,7 +74,7 @@ public class ProvideIdent: NSObject {
             if let result = result as? Data {
                 let deserialized = try? JSONSerialization.jsonObject(with: result, options: .allowFragments)
                 if let deserialized = deserialized as? [String : Any], let appId = deserialized["id"] as? String {
-                    KeychainService.shared.appId = appId
+                    ProvideKeychainService.shared.appId = appId
                     successHandler(deserialized as AnyObject)
                 } else {
                     let error = ProvideError.unexpectedResponse(message: "Unable to extract application ID from response.")

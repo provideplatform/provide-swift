@@ -160,7 +160,7 @@ open class ProvideApiClient: NSObject {
     }
     
     open func authHeaders() -> [String : String]? {
-        if let authToken = KeychainService.shared.authToken {
+        if let authToken = ProvideKeychainService.shared.authToken {
             return [
                 "user-agent" : "provide-swift client",
                 "authorization" : "bearer \(authToken)"

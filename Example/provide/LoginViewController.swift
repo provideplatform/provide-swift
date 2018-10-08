@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
             { [weak self] (result) in
                 if let authToken = result as? String {
                     print("PRVD: Acquired auth token")
-                    KeychainService.shared.authToken = authToken
+                    ProvideKeychainService.shared.authToken = authToken
                     self?.performSegue(withIdentifier: "LoginSegue", sender: nil)
                 } else {
                     self?.showAlert(title: "Unexpected Result", message: String(describing: result))

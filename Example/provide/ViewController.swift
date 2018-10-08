@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                     print("PRVD: This app has \(deserialized.count) api tokens")
                     if let tokenDict = deserialized.first, let token = tokenDict["token"] as? String {
                         print("PRVD: Storing application API token: \(token)")
-                        KeychainService.shared.appApiToken = token
+                        ProvideKeychainService.shared.appApiToken = token
                         self?.doEverythingElse()
                     } else {
                         print("PRVD: Unable to parse out the first application")
@@ -239,7 +239,7 @@ class ViewController: UIViewController {
     // MARK: - Helper Methods
     
     private func apiClient() -> ProvideApiClient {
-        return ProvideApiClient(KeychainService.shared.appApiToken!)
+        return ProvideApiClient(ProvideKeychainService.shared.appApiToken!)
     }
 
 }
