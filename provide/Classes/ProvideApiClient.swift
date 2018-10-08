@@ -131,7 +131,7 @@ open class ProvideApiClient: NSObject {
         return url.url
     }
     
-    open func authHeaders() -> HTTPHeaders? { // [String : String]
+    open func authHeaders() -> [String : String]? {
         if let authToken = KeychainService.shared.authToken {
             return [
                 "user-agent" : "provide-swift client",
@@ -145,12 +145,13 @@ open class ProvideApiClient: NSObject {
         }
     }
     
-    open func apiHeaders(overrideApiToken: String = "") -> HTTPHeaders? {
+    open func apiHeaders(overriddenApiToken: String = "") -> [String : String]? {
         // Use method-injected API token, if one is given
-        if apiToken.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+        let givenValue = overriddenApiToken.trimmingCharacters(in: .whitespacesAndNewlines)
+        if givenValue != "" {
             return [
                 "user-agent" : "provide-swift client",
-                "authorization" : "bearer \(apiToken)"
+                "authorization" : "bearer \(givenValue)"
             ]
         }
         // Use constructor-injected API token, if present
