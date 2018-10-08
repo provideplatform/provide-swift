@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint provide.podspec' to ensure this is a
+# Be sure to run `pod lib lint Provide.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'provide'
+  s.name             = 'Provide'
   s.version          = '0.2.0'
   s.summary          = 'Provide Swift client library'
   s.swift_version    = '4.2'
@@ -30,7 +30,7 @@ Provide Swift client library.
   s.source_files = 'provide/Classes/**/*.swift'
   
   # s.resource_bundles = {
-  #   'provide' => ['provide/Assets/*.png']
+  #   'Provide' => ['Provide/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

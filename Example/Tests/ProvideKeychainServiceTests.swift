@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import provide
+import Provide
 
 public class ProvideKeychainServiceTests: XCTestCase {
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import provide
+import Provide
 
 class LoginViewController: UIViewController {
     

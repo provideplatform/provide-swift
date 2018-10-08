@@ -7,8 +7,8 @@
 //
 
 import XCTest
-import provide
-// @testable import provide_Example
+import Provide
+// @testable import Provide_Example
 
 class ProvideApiClientTests: XCTestCase {
     

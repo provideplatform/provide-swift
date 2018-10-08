@@ -5,7 +5,7 @@ PODS:
     - ObjectMapper (~> 3.3)
   - JWTDecode (2.1.1)
   - ObjectMapper (3.3.0)
-  - provide (0.1.0):
+  - Provide (0.2.0):
     - Alamofire (~> 4.0)
     - AlamofireObjectMapper (~> 5.0)
     - JWTDecode (~> 2.0)
@@ -14,7 +14,7 @@ PODS:
   - UICKeyChainStore (2.1.1)
 
 DEPENDENCIES:
-  - provide (from `../`)
+  - Provide (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -25,7 +25,7 @@ SPEC REPOS:
     - UICKeyChainStore
 
 EXTERNAL SOURCES:
-  provide:
+  Provide:
     :path: "../"
 
 SPEC CHECKSUMS:
@@ -33,9 +33,9 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  provide: b003c093e140f3fae8d203bec70e36871eb6e60d
+  Provide: d25eb6a3bf87275fb720b75e38d471881c5e3876
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
 
-PODFILE CHECKSUM: 0103ff30afa80686f9d01ea0c04c3acec17f23fb
+PODFILE CHECKSUM: b96d0e8188f9e417ccda09ccd30969037476361c
 
 COCOAPODS: 1.5.3

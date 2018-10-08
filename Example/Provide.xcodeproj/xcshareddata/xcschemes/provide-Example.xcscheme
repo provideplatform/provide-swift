@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "provide_Example.app"
-               BlueprintName = "provide_Example"
-               ReferencedContainer = "container:provide.xcodeproj">
+               BuildableName = "Provide_Example.app"
+               BlueprintName = "Provide_Example"
+               ReferencedContainer = "container:Provide.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "provide_Tests.xctest"
-               BlueprintName = "provide_Tests"
-               ReferencedContainer = "container:provide.xcodeproj">
+               BuildableName = "Provide_Tests.xctest"
+               BlueprintName = "Provide_Tests"
+               ReferencedContainer = "container:Provide.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "provide_Tests.xctest"
-               BlueprintName = "provide_Tests"
-               ReferencedContainer = "container:provide.xcodeproj">
+               BuildableName = "Provide_Tests.xctest"
+               BlueprintName = "Provide_Tests"
+               ReferencedContainer = "container:Provide.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "provide_Example.app"
-            BlueprintName = "provide_Example"
-            ReferencedContainer = "container:provide.xcodeproj">
+            BuildableName = "Provide_Example.app"
+            BlueprintName = "Provide_Example"
+            ReferencedContainer = "container:Provide.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "provide_Example.app"
-            BlueprintName = "provide_Example"
-            ReferencedContainer = "container:provide.xcodeproj">
+            BuildableName = "Provide_Example.app"
+            BlueprintName = "Provide_Example"
+            ReferencedContainer = "container:Provide.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -136,9 +136,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "provide_Example.app"
-            BlueprintName = "provide_Example"
-            ReferencedContainer = "container:provide.xcodeproj">
+            BuildableName = "Provide_Example.app"
+            BlueprintName = "Provide_Example"
+            ReferencedContainer = "container:Provide.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

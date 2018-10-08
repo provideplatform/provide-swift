@@ -2,10 +2,10 @@ platform :ios, '10.3'
 inhibit_all_warnings!
 use_frameworks!
 
-target 'provide_Example' do
-  pod 'provide', :path => '../'
+target 'Provide_Example' do
+  pod 'Provide', :path => '../'
 
-  target 'provide_Tests' do
+  target 'Provide_Tests' do
     inherit! :search_paths
 
     

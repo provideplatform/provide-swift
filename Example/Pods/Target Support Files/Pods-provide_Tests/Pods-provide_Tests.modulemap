@@ -1,5 +1,5 @@
-framework module Pods_provide_Tests {
-  umbrella header "Pods-provide_Tests-umbrella.h"
+framework module Pods_Provide_Tests {
+  umbrella header "Pods-Provide_Tests-umbrella.h"
 
   export *
   module * { export * }
