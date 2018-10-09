@@ -10,10 +10,11 @@ import UIKit
 import provide
 
 class InsurerViewController: UIViewController {
-    
+
     var networkId: String!
 
     @IBOutlet private weak var contributionAmount: UITextField!
+    @IBOutlet private weak var responseTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +30,10 @@ class InsurerViewController: UIViewController {
     }
 
     @IBAction private func contributeToMember2() {
-        let amt = Int(contributionAmount!.text!)!
-        contributeToMember(member: member2Addr, amount: amt)
+        if let contributionAmountText = contributionAmount?.text {
+            let amt = Int(contributionAmountText)!
+            contributeToMember(member: member2Addr, amount: amt)
+        }
     }
     
     // MARK: - Private Methods

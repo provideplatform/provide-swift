@@ -50,6 +50,8 @@ class LoginViewController: UIViewController {
 
             } else if btn == employerButton {
                 let employerVC = segue.destination as! EmployerViewController
+                employerVC.employerAddr = employerAddr
+                employerVC.employerContractId = employerContractId
 
             } else if btn == member1Button {
                 let memberVC = segue.destination as! MemberViewController

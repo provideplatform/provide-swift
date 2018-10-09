@@ -12,6 +12,13 @@ import provide
 class EmployerViewController: UIViewController {
     
     var networkId: String!
+    var employerAddr: String!
+    var employerContractId: String!
+
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var identityLabel: UILabel!
+    @IBOutlet private weak var balanceLabel: UILabel!
+    @IBOutlet private weak var responseTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +26,40 @@ class EmployerViewController: UIViewController {
         if let storedNetworkId = UserDefaults.standard.object(forKey: networkIdKey) as? String {
             networkId = storedNetworkId
         }
-        getApplications()
+
+        identityLabel?.text = ""
+        balanceLabel?.text = ""
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        identityLabel?.text = ""
+        balanceLabel?.text = ""
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        identityLabel?.text = employerAddr
+
+        activityIndicatorView?.startAnimating()
+        activityIndicatorView?.isHidden = false
+        getEmployerBalance(employerContractId: employerContractId) { [weak self] (response) in
+            self?.balanceLabel?.text = String(describing: response!)
+            self?.activityIndicatorView?.stopAnimating()
+            self?.activityIndicatorView?.isHidden = true
+        }
+    }
+
     // MARK: - Private Methods
-    
+
+    @IBAction func cashOut() {
+        responseTextView?.text = ""
+        cashOutEmployer(employerContractId: employerContractId) { [weak self] (result) in
+            var response = String(data: result as! Data, encoding: String.Encoding.utf8) as String!
+            self?.responseTextView?.text = response
+        }
+    }
+
     private func getApplications() {
         try? ProvideIdent().listApplications(successHandler: { [weak self] (result) in
             if let result = result as? Array<[String : Any]> {

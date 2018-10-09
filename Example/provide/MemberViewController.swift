@@ -60,7 +60,6 @@ class MemberViewController: UIViewController {
             self?.contributionActivityIndicatorView?.stopAnimating()
             self?.contributionActivityIndicatorView?.isHidden = true
         }
-
     }
     
     // MARK: - Private Methods
