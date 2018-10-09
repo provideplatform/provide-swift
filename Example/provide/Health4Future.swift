@@ -23,9 +23,9 @@ public typealias H4FNumericContractApiSuccessHandler = (Double?) -> Void
 
 // Insurer methods
 
-func contributeToMember(member: String, amount: Double) {
+func contributeToMember(member: String, amount: Int) {
     // 0x157CdF5340Ca2768bF3Ca2f07A6aB083344c08fB
-    try? ProvideGoldmine(apiClient).executeContract(contractId: "e581ad78-b08f-48ed-a626-7d9f9c697e04", parameters: [ "walletId": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "contributeToFuture", "value": 0, "params": [amount, member, 2, 2018] ], successHandler: { (result) in
+    try? ProvideGoldmine(apiClient).executeContract(contractId: "e581ad78-b08f-48ed-a626-7d9f9c697e04", parameters: [ "wallet_id": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "contributeToFuture", "value": 0, "params": [amount, member, 2, 2018] ], successHandler: { (result) in
         // Process result
     }, failureHandler: { (response, result, error) in
         // Handle error
@@ -36,7 +36,7 @@ func contributeToMember(member: String, amount: Double) {
 // Member
 
 func getBalance(memberContractId: String, onSuccess: @escaping H4FNumericContractApiSuccessHandler) {
-    try? ProvideGoldmine(apiClient).executeContract(contractId: memberContractId, parameters: [ "walletId": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getBalance", "value": 0, "params": [] ], successHandler: { (result) in
+    try? ProvideGoldmine(apiClient).executeContract(contractId: memberContractId, parameters: [ "wallet_id": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getBalance", "value": 0, "params": [] ], successHandler: { (result) in
 
         let deserialized = try? JSONSerialization.jsonObject(with: result as! Data, options: .allowFragments)
         if let deserialized = deserialized as? [String : Any] {
@@ -56,7 +56,7 @@ func getBalance(memberContractId: String, onSuccess: @escaping H4FNumericContrac
 }
 
 func getTotalPct(memberContractId: String, onSuccess: @escaping H4FNumericContractApiSuccessHandler) {
-    try? ProvideGoldmine(apiClient).executeContract(contractId: memberContractId, parameters: [ "walletId": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getTotalPct", "value": 0, "params": [] ], successHandler: { (result) in
+    try? ProvideGoldmine(apiClient).executeContract(contractId: memberContractId, parameters: [ "wallet_id": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getTotalPct", "value": 0, "params": [] ], successHandler: { (result) in
 
         let deserialized = try? JSONSerialization.jsonObject(with: result as! Data, options: .allowFragments)
         if let deserialized = deserialized as? [String : Any] {
@@ -79,7 +79,7 @@ func getTotalPct(memberContractId: String, onSuccess: @escaping H4FNumericContra
 
 func getEmployerBalance(onSuccess: @escaping H4FNumericContractApiSuccessHandler) {
     let employerContractId = "f6e032bb-701a-4b67-b1d9-0887286012f6"
-    try? ProvideGoldmine(apiClient).executeContract(contractId: employerContractId, parameters: [ "walletId": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getBalance", "value": 0, "params": [] ], successHandler: { (result) in
+    try? ProvideGoldmine(apiClient).executeContract(contractId: employerContractId, parameters: [ "wallet_id": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getBalance", "value": 0, "params": [] ], successHandler: { (result) in
 
         let deserialized = try? JSONSerialization.jsonObject(with: result as! Data, options: .allowFragments)
         if let deserialized = deserialized as? [String : Any] {
@@ -98,7 +98,7 @@ func getEmployerBalance(onSuccess: @escaping H4FNumericContractApiSuccessHandler
 
 func cashOut() {
     let employerContractId = "f6e032bb-701a-4b67-b1d9-0887286012f6"
-    try? ProvideGoldmine(apiClient).executeContract(contractId: employerContractId, parameters: [ "walletId": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "cashOut", "value": 0, "params": [] ], successHandler: { (result) in
+    try? ProvideGoldmine(apiClient).executeContract(contractId: employerContractId, parameters: [ "wallet_id": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "cashOut", "value": 0, "params": [] ], successHandler: { (result) in
         // Process result
     }, failureHandler: { (response, result, error) in
         // Handle error
@@ -110,7 +110,7 @@ func cashOut() {
 
 func getParticipantBalance(participant: String, onSuccess: @escaping H4FNumericContractApiSuccessHandler) {
     let providerContractId = "02f054b3-6cf7-4d99-ab83-6c0ac11024ed"
-    try? ProvideGoldmine(apiClient).executeContract(contractId: providerContractId, parameters: [ "walletId": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getParticipantBalance", "value": 0, "params": [participant] ], successHandler: { (result) in
+    try? ProvideGoldmine(apiClient).executeContract(contractId: providerContractId, parameters: [ "wallet_id": "abcff7e5-9c48-4176-9f8b-927bb79430e6", "method": "getParticipantBalance", "value": 0, "params": [participant] ], successHandler: { (result) in
 
         let deserialized = try? JSONSerialization.jsonObject(with: result as! Data, options: .allowFragments)
         if let deserialized = deserialized as? [String : Any] {

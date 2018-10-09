@@ -13,13 +13,24 @@ class InsurerViewController: UIViewController {
     
     var networkId: String!
 
+    @IBOutlet private weak var contributionAmount: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let storedNetworkId = UserDefaults.standard.object(forKey: networkIdKey) as? String {
             networkId = storedNetworkId
         }
-        getApplications()
+    }
+
+    @IBAction private func contributeToMember1() {
+        let amt = Int(contributionAmount!.text!)!
+        contributeToMember(member: member1Addr, amount: amt)
+    }
+
+    @IBAction private func contributeToMember2() {
+        let amt = Int(contributionAmount!.text!)!
+        contributeToMember(member: member2Addr, amount: amt)
     }
     
     // MARK: - Private Methods
