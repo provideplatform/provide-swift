@@ -13,6 +13,10 @@ class ProviderViewController: UIViewController, UITableViewDelegate, UITableView
 
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
@@ -34,135 +38,12 @@ class ProviderViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         getBalance(memberContractId: memberContractId) { (response) in
-            cell?.detailTextLabel?.text = String(describing: response)
+            (cell?.contentView.viewWithTag(22) as! UILabel).text = "Mbr \(memberContractId!)"
+            (cell?.contentView.viewWithTag(44) as! UILabel).text = String(describing: response!)
         }
 
         return cell!
     }
-
-
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int)
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-//
-//    @available(iOS 7.0, *)
-//    optional public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
-//
-//    @available(iOS 7.0, *)
-//    optional public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat
-//
-//    @available(iOS 7.0, *)
-//    optional public func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
-//
-//    @available(iOS 6.0, *)
-//    optional public func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath?
-//
-//    @available(iOS 3.0, *)
-//    optional public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath?
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-//
-//    @available(iOS 3.0, *)
-//    optional public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
-//
-//    @available(iOS 3.0, *)
-//    optional public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
-//
-//    @available(iOS 8.0, *)
-//    optional public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
-//
-//    @available(iOS 11.0, *)
-//    optional public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-//
-//    @available(iOS 11.0, *)
-//    optional public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath)
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?)
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
-//
-//    @available(iOS 2.0, *)
-//    optional public func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int
-//
-//    @available(iOS 5.0, *)
-//    optional public func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool
-//
-//    @available(iOS 5.0, *)
-//    optional public func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool
-//
-//    @available(iOS 5.0, *)
-//    optional public func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?)
-//
-//    @available(iOS 9.0, *)
-//    optional public func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool
-//
-//    @available(iOS 9.0, *)
-//    optional public func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool
-//
-//    @available(iOS 9.0, *)
-//    optional public func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
-//
-//    @available(iOS 9.0, *)
-//    optional public func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath?
-//
-//    @available(iOS 11.0, *)
-//    optional public func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool
-
-
-
 
     var networkId: String!
 
@@ -172,7 +53,6 @@ class ProviderViewController: UIViewController, UITableViewDelegate, UITableView
         if let storedNetworkId = UserDefaults.standard.object(forKey: networkIdKey) as? String {
             networkId = storedNetworkId
         }
-        getApplications()
     }
     
     // MARK: - Private Methods
