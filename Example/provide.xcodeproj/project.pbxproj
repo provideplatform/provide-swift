@@ -21,6 +21,11 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* ProvideIdentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */; };
+		68507F9D216C456B000727FE /* Health4Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68507F9C216C456B000727FE /* Health4Future.swift */; };
+		68507FA1216C4619000727FE /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68507F9E216C4619000727FE /* MemberViewController.swift */; };
+		68507FA2216C4619000727FE /* ProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68507F9F216C4619000727FE /* ProviderViewController.swift */; };
+		68507FA3216C4619000727FE /* InsurerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68507FA0216C4619000727FE /* InsurerViewController.swift */; };
+		68507FA6216C470D000727FE /* EmployerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68507FA5216C470D000727FE /* EmployerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,11 @@
 		607FACE51AFB9204008FA782 /* provide_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = provide_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvideIdentTests.swift; sourceTree = "<group>"; };
+		68507F9C216C456B000727FE /* Health4Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health4Future.swift; sourceTree = "<group>"; };
+		68507F9E216C4619000727FE /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		68507F9F216C4619000727FE /* ProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderViewController.swift; sourceTree = "<group>"; };
+		68507FA0216C4619000727FE /* InsurerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsurerViewController.swift; sourceTree = "<group>"; };
+		68507FA5216C470D000727FE /* EmployerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployerViewController.swift; sourceTree = "<group>"; };
 		88C35C459157BEFAA6D7B2EB /* Pods-provide_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-provide_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-provide_Example/Pods-provide_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A777B34015988BCE3BCE2755 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B28EDFBD3838D98D85FF15F5 /* Pods_provide_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_provide_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +124,7 @@
 		607FACD21AFB9204008FA782 /* Example for provide */ = {
 			isa = PBXGroup;
 			children = (
+				68507FA4216C461E000727FE /* Health4Future */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				38E0F0CB216B32390095BE22 /* Constants.swift */,
 				38E0F0C9216B14530095BE22 /* LoginViewController.swift */,
@@ -163,6 +174,18 @@
 				A777B34015988BCE3BCE2755 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		68507FA4216C461E000727FE /* Health4Future */ = {
+			isa = PBXGroup;
+			children = (
+				68507FA5216C470D000727FE /* EmployerViewController.swift */,
+				68507F9C216C456B000727FE /* Health4Future.swift */,
+				68507FA0216C4619000727FE /* InsurerViewController.swift */,
+				68507F9E216C4619000727FE /* MemberViewController.swift */,
+				68507F9F216C4619000727FE /* ProviderViewController.swift */,
+			);
+			name = Health4Future;
 			sourceTree = "<group>";
 		};
 		B11B589730E8A6EDCCCDA051 /* Frameworks */ = {
@@ -371,10 +394,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68507FA1216C4619000727FE /* MemberViewController.swift in Sources */,
 				38E0F0CA216B14530095BE22 /* LoginViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				68507FA2216C4619000727FE /* ProviderViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				68507FA3216C4619000727FE /* InsurerViewController.swift in Sources */,
 				38E0F0CC216B32390095BE22 /* Constants.swift in Sources */,
+				68507FA6216C470D000727FE /* EmployerViewController.swift in Sources */,
+				68507F9D216C456B000727FE /* Health4Future.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

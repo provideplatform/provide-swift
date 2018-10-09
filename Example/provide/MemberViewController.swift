@@ -9,9 +9,17 @@
 import UIKit
 import provide
 
-class ViewController: UIViewController {
+class MemberViewController: UIViewController {
     
     var networkId: String!
+    var memberAddr: String!
+    var memberContractId: String!
+
+    @IBOutlet private weak var balanceActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var contributionActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var identityLabel: UILabel!
+    @IBOutlet private weak var balanceLabel: UILabel!
+    @IBOutlet private weak var totalPctLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +28,39 @@ class ViewController: UIViewController {
             networkId = storedNetworkId
         }
 //        getApplications()
+
+        identityLabel?.text = ""
+        balanceLabel?.text = ""
+        totalPctLabel?.text = ""
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        identityLabel?.text = ""
+        balanceLabel?.text = ""
+        totalPctLabel?.text = ""
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        identityLabel?.text = memberAddr
+
+        balanceActivityIndicatorView?.startAnimating()
+        balanceActivityIndicatorView?.isHidden = false
+        getBalance(memberContractId: memberContractId) { [weak self] (response) in
+            self?.balanceLabel?.text = String(describing: response!)
+            self?.balanceActivityIndicatorView?.stopAnimating()
+            self?.balanceActivityIndicatorView?.isHidden = true
+        }
+
+        contributionActivityIndicatorView?.startAnimating()
+        contributionActivityIndicatorView?.isHidden = false
+        getTotalPct(memberContractId: memberContractId) { [weak self] (response) in
+            self?.totalPctLabel?.text = String(describing: response!)
+            self?.contributionActivityIndicatorView?.stopAnimating()
+            self?.contributionActivityIndicatorView?.isHidden = true
+        }
+
     }
     
     // MARK: - Private Methods
@@ -100,7 +141,6 @@ class ViewController: UIViewController {
                 "\nResponse = \(String(describing: response)) \nResult = \(String(describing: result))")
         }
     }
-    
     
     private func processNetworkTransactions() {
         let params = [String : Any]()

@@ -9,7 +9,7 @@
 import UIKit
 import provide
 
-class ViewController: UIViewController {
+class InsurerViewController: UIViewController {
     
     var networkId: String!
 
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         if let storedNetworkId = UserDefaults.standard.object(forKey: networkIdKey) as? String {
             networkId = storedNetworkId
         }
-//        getApplications()
+        getApplications()
     }
     
     // MARK: - Private Methods

@@ -1,6 +1,6 @@
 {
   "name": "provide",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "Provide Swift client library",
   "swift_version": "4.2",
   "description": "Provide Swift client library.",
@@ -15,12 +15,12 @@
   },
   "source": {
     "git": "https://github.com/provideservices/provide-swift.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "platforms": {
     "ios": "10.3"
   },
-  "source_files": "provide/Classes/**/*",
+  "source_files": "provide/Classes/**/*.swift",
   "dependencies": {
     "Alamofire": [
       "~> 4.0"
