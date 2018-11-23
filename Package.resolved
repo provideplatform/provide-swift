@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "61a780f3b58ee0d2bb76fdb7b89dbc9751d521d7",
+          "version": "4.7.3"
+        }
+      },
+      {
+        "package": "JWTDecode.swift",
+        "repositoryURL": "https://github.com/kthomas/JWTDecode.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "4321b7dced37369953cfabc8cd992156889814da",
+          "version": "2.1.4"
+        }
+      },
+      {
+        "package": "ObjectMapper",
+        "repositoryURL": "https://github.com/tristanhimmelman/ObjectMapper.git",
+        "state": {
+          "branch": null,
+          "revision": "feb763a93755b5b576e09a9db2cb8d380fd65ba2",
+          "version": "3.4.1"
+        }
+      },
+      {
+        "package": "UICKeyChainStore",
+        "repositoryURL": "https://github.com/kthomas/UICKeyChainStore.git",
+        "state": {
+          "branch": null,
+          "revision": "4fda05817a5700180d186243a0a4f1767e31f939",
+          "version": "2.1.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
