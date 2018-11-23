@@ -22,7 +22,7 @@ pod 'provide'
 
 ## Author
 
-kthomas, k.thomas@unmarkedconsulting.com
+kthomas, kyle@provide.services
 muncman, kevin@provide.services
 
 ## License
