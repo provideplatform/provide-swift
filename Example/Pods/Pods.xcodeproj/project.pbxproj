@@ -51,6 +51,10 @@
 		5E25BCD30BDE2E7A68D1A6FAF7253AD4 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB5802ADFFC1A43A836CF012F006729 /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		61AFC7EB110A97A5CD6E1FC1D9EE88DA /* EnumOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63328C8FCAF5F3CC0DC0038D0A7497B /* EnumOperators.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6540CC4D369A32F6DE54AFA8D5D6FAF9 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE887E935F9CBADE454F567D60F94B19 /* Alamofire-dummy.m */; };
+		681AAE1221A7C0540050D006 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681AAE1121A7C0540050D006 /* DataExtensions.swift */; };
+		681AAE1321A7C0880050D006 /* EllipticCurveKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681AAE0B21A7C01F0050D006 /* EllipticCurveKeyPair.swift */; };
+		681AAE1421A7C08D0050D006 /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681AAE0D21A7C01F0050D006 /* SHA256.swift */; };
+		681AAE1521A7C1040050D006 /* ProvideBcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681AAE0421A7A8960050D006 /* ProvideBcoin.swift */; };
 		699C58DD441C23CDF924C05EDF670203 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E117DB92322C94531C52136E93B0FD /* Operators.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		69B67D36F4DB39A03E0C138C35573492 /* Provide-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C25442C11080BBF3C6687264834CCE6 /* Provide-dummy.m */; };
 		6E459924B226EBE38920B9B82FE16281 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D468A9548FB4F04CE17B51B70B4FD /* ArrayExtensions.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -268,6 +272,10 @@
 		655B60239BAA186431126FC2FD95D840 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66627D1A5572C31A4530DCFA1B84FF8D /* ObjectMapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ObjectMapper.modulemap; sourceTree = "<group>"; };
 		678E52B95EB41BA2CBFB6790666055F2 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
+		681AAE0421A7A8960050D006 /* ProvideBcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideBcoin.swift; path = provide/Classes/ProvideBcoin.swift; sourceTree = "<group>"; };
+		681AAE0B21A7C01F0050D006 /* EllipticCurveKeyPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EllipticCurveKeyPair.swift; sourceTree = "<group>"; };
+		681AAE0D21A7C01F0050D006 /* SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		681AAE1121A7C0540050D006 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		6857734A00910DEEEB994DEA615FBD2A /* MKMapViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensions.swift; sourceTree = "<group>"; };
 		68E727CBD2CD9604874A0231F108F433 /* Pods-Provide_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Provide_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		69A67CE80B7D97C15AA25540F6B18A0D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -499,6 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				0CBDAB5BAA9FA585B5A10634D7FEB10F /* ProvideApiClient.swift */,
+				681AAE0421A7A8960050D006 /* ProvideBcoin.swift */,
 				7CE45EB0A6DDB963C81779442065759A /* ProvideGoldmine.swift */,
 				AD9B278DAFE57EF5CA6FF175FBAAD852 /* ProvideIdent.swift */,
 				2818A3A809733F953BB217F78D917911 /* ProvideKeychainService.swift */,
@@ -756,6 +765,7 @@
 			children = (
 				BF1D468A9548FB4F04CE17B51B70B4FD /* ArrayExtensions.swift */,
 				8384079299301CC2B9DB95ED5B1C5276 /* CLLocationExtensions.swift */,
+				681AAE1121A7C0540050D006 /* DataExtensions.swift */,
 				7FA30F3ED89DEB8A79C3A3C490D73A39 /* DateExtensions.swift */,
 				7545F9979F743E2F2519B2D376C01E1C /* DateFormatterExtensions.swift */,
 				72756C0A1540DF4EB99704A742A82DFA /* DictionaryExtensions.swift */,
@@ -814,9 +824,11 @@
 		FC1E103F3CB93A408547F2B1DFA46546 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				681AAE0B21A7C01F0050D006 /* EllipticCurveKeyPair.swift */,
 				2966EF1FFEFE457F90A7F544359838EA /* KTFunctions.swift */,
 				971BF141900494B788DBD996FCC677BB /* KTRegex.swift */,
 				994EAAB12D6A41331655813A5F97CF0E /* KTVersionHelper.swift */,
+				681AAE0D21A7C01F0050D006 /* SHA256.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1153,7 +1165,9 @@
 				6E459924B226EBE38920B9B82FE16281 /* ArrayExtensions.swift in Sources */,
 				EAF8717C5D4ECA243070C45C9D07206B /* BuildConfig.swift in Sources */,
 				F23FD4686490FD187A5E65EEE5B8074F /* CLLocationExtensions.swift in Sources */,
+				681AAE1221A7C0540050D006 /* DataExtensions.swift in Sources */,
 				54361BF5DE395949110EB5D51027505F /* DateExtensions.swift in Sources */,
+				681AAE1421A7C08D0050D006 /* SHA256.swift in Sources */,
 				529C5C382DCEFD5AD2F9BD87FACA1889 /* DateFormatterExtensions.swift in Sources */,
 				EA6232FA8234F7891036F3783622CCAA /* DictionaryExtensions.swift in Sources */,
 				092BE0096901B7ACC3411F4176E1492B /* KTApiService.swift in Sources */,
@@ -1165,7 +1179,9 @@
 				0EA6FE8F2F8A6A7A0BF1D9E7BF6E5C6B /* KTRegex.swift in Sources */,
 				B58527EDAF983CA580A5859094EF62AF /* KTVersionHelper.swift in Sources */,
 				D0AF242E06ABD3E4542DB10F130B9CE4 /* MKMapViewExtensions.swift in Sources */,
+				681AAE1521A7C1040050D006 /* ProvideBcoin.swift in Sources */,
 				04E94CD1EE320947410BE4BB854F8BC2 /* MKPolygonExtensions.swift in Sources */,
+				681AAE1321A7C0880050D006 /* EllipticCurveKeyPair.swift in Sources */,
 				538EE7D30B06087FBD705B7A49C6A56E /* NotificationCenterExtensions.swift in Sources */,
 				D9115EBED23ED6EE7B7762099A12606E /* NSURLExtensions.swift in Sources */,
 				69B67D36F4DB39A03E0C138C35573492 /* Provide-dummy.m in Sources */,
