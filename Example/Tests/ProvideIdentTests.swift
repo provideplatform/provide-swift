@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Provide
+import provide
 
 class ProvideIdentTests: XCTestCase {
     

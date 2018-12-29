@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Provide
+import provide
 // @testable import Provide_Example
 
 class ProvideApiClientTests: XCTestCase {

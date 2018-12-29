@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Provide
+import provide
 
 class ViewController: UIViewController {
     
@@ -19,7 +19,10 @@ class ViewController: UIViewController {
         if let storedNetworkId = UserDefaults.standard.object(forKey: networkIdKey) as? String {
             networkId = storedNetworkId
         }
-        getApplications()
+//        getApplications()
+		let serverToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjpudWxsLCJpYXQiOjE1NDYwNjMxNTAsImp0aSI6IjhlMGIzOTQ3LTZmNDQtNDZiZi04Y2RiLWY2OWIxMGFmYWUzMSIsInN1YiI6InVzZXI6Zjk2NDk1NDktN2U3ZC00NTlhLTgwYmUtMTU1ZDNjOTA2ZWE4In0.kxke9lqTDpDfiNvf8OefUBfTOUq_IYQuIHORFr250eI"
+        ProvideKeychainService.shared.appApiToken = serverToken
+        self.doEverythingElse()
     }
     
     // MARK: - Private Methods
@@ -72,15 +75,15 @@ class ViewController: UIViewController {
     
     private func doEverythingElse() {
 //        processNetworkStatus()
-        processNetworkTokens()
-        processNetworkTransactions()
-        processNetworkNodes()
+//        processNetworkTokens()
+//        processNetworkTransactions()
+//        processNetworkNodes()
         /** 501: Not Implemented:
         processNetworkBlocks()
         processNetworkBridges()
         processNetworkOracles()
         */
-//        executeContract()
+        executeContract()
     }
     
     private func processNetworkStatus() {
@@ -212,13 +215,13 @@ class ViewController: UIViewController {
     
     private func executeContract() {
         let params: [String : Any] = [
-            "walletId" : "your-wallet-id",
-            "method" : "nameOfFunctionInYourContract",
+            "walletId" : "7f97758c-fb6c-475c-942a-0e841a6b62c7", // "your-wallet-id",
+            "method" : "getnameproof", //nameOfFunctionInYourContract",
             "value" : 0,
-            "params" : ["the", "arguments", "to", "your", "specified", "contract", "method"]
+            "params" : ["ethsimple"] // ["the", "arguments", "to", "your", "specified", "contract", "method"]
         ]
         try? ProvideGoldmine(apiClient()).executeContract(
-            contractId: "your-contract-id",
+            contractId: "rpc:5f6b1dba-8987-4468-b1a0-968f002edf89", // "your-contract-id", will become nil 
             parameters: params,
             successHandler: { (result) in
                 if let result = result as? Data {
