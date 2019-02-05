@@ -26,10 +26,20 @@ class LoginViewController: UIViewController {
         } else {
             networkField.text = "024ff1ef-7369-4dee-969c-1918c6edb5d4" // "7704f95f-db4d-444a-9f89-cc7cc37bcc2b" // prod
         }
+
+        let serverToken = ""
+        ProvideKeychainService.shared.authToken = serverToken
 		
-        emailField.text = "calder.ben@gmail.com"
-        passwordField.text = "v4WX[jWNTKjwdUxRPwTuz8@b"
+        emailField.text = ""
+        passwordField.text = ""
         submitButton.isEnabled = true
+
+        try? ProvideGoldmine().executeContract(contractId: "c252c025-00f4-48db-a9f7-37585945acde", parameters: [ "walletId": "a68a35d9-a299-4c22-9278-a0bb63173c73", "method": "winningProposal", "value": 0, "params": [] ], successHandler: { (result) in
+            // Process result
+            log("\(result)")
+        }, failureHandler: { (response, result, error) in
+            log("\(response)")
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,7 +69,7 @@ class LoginViewController: UIViewController {
             { [weak self] (result) in
                 if let authToken = result as? String {
                     print("PRVD: Acquired auth token: \(authToken)")
-                    let givenToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjpudWxsLCJpYXQiOjE1NDYwNjQ1MDMsImp0aSI6IjAzMjMxNTUyLTVkODItNDQ1YS05ZDJhLTVkY2FjOTNmNzVlNSIsInN1YiI6ImFwcGxpY2F0aW9uOmQzNmRhZWI4LTNhN2YtNGJmYi1iZGNiLTAwMDUyYWM1MzZmMSJ9.bSerx_Wd8wr29712vAYKvW8O8SMWKNJEQmxg1qvRCDw"
+                    let givenToken = ""
                     ProvideKeychainService.shared.authToken = givenToken // authToken
                     self?.performSegue(withIdentifier: "LoginSegue", sender: nil)
                 } else {

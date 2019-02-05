@@ -189,6 +189,12 @@ open class ProvideApiClient: NSObject {
                 "authorization" : "bearer \(self.apiToken)"
             ]
         }
+        if let apiToken = ProvideKeychainService.shared.authToken {
+            return [
+                "user-agent" : "provide-swift client",
+                "authorization" : "bearer \(apiToken)"
+            ]
+        }
         // else
         print("No API token available for header! Returning nil.")
         return nil

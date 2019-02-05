@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             networkId = storedNetworkId
         }
 //        getApplications()
-		let serverToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjpudWxsLCJpYXQiOjE1NDYwNjMxNTAsImp0aSI6IjhlMGIzOTQ3LTZmNDQtNDZiZi04Y2RiLWY2OWIxMGFmYWUzMSIsInN1YiI6InVzZXI6Zjk2NDk1NDktN2U3ZC00NTlhLTgwYmUtMTU1ZDNjOTA2ZWE4In0.kxke9lqTDpDfiNvf8OefUBfTOUq_IYQuIHORFr250eI"
+		let serverToken = ""
         ProvideKeychainService.shared.appApiToken = serverToken
         self.doEverythingElse()
     }
