@@ -20,8 +20,9 @@
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
-		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* ProvideIdentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */; };
+		68D230E7220D1137005BDBB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D230E6220D1137005BDBB6 /* LaunchScreen.storyboard */; };
+		68D230E9220D1220005BDBB6 /* TruePollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D230E8220D1220005BDBB6 /* TruePollViewController.swift */; };
 		B28522D80A4EC89582B99BFD /* Pods_Provide_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9523658556EDE5DE811DB110 /* Pods_Provide_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,10 +53,11 @@
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Provide_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Provide_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* ProvideIdentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvideIdentTests.swift; sourceTree = "<group>"; };
+		68D230E6220D1137005BDBB6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68D230E8220D1220005BDBB6 /* TruePollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruePollViewController.swift; sourceTree = "<group>"; };
 		88C35C459157BEFAA6D7B2EB /* Pods-provide_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-provide_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-provide_Example/Pods-provide_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		92F1C55350806E7CB16F67F0 /* Pods-Provide_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Provide_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Provide_Tests/Pods-Provide_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9523658556EDE5DE811DB110 /* Pods_Provide_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Provide_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,9 +129,10 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				38E0F0CB216B32390095BE22 /* Constants.swift */,
 				38E0F0C9216B14530095BE22 /* LoginViewController.swift */,
+				68D230E8220D1220005BDBB6 /* TruePollViewController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				68D230E6220D1137005BDBB6 /* LaunchScreen.storyboard */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -255,7 +258,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = APF8GW8A33;
+						DevelopmentTeam = 4A8DZ57H2Y;
 						LastSwiftMigration = 1000;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -265,7 +268,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Provide" */;
+			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "provide" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -290,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				68D230E7220D1137005BDBB6 /* LaunchScreen.storyboard in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +314,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Provide_Example/Pods-Provide_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Provide_Example/Pods-Provide_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
@@ -330,7 +333,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Provide_Example/Pods-Provide_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Provide_Example/Pods-Provide_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		802A636A8488DA8572CFE4DE /* [CP] Check Pods Manifest.lock */ = {
@@ -378,6 +381,7 @@
 			files = (
 				38E0F0CA216B14530095BE22 /* LoginViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				68D230E9220D1220005BDBB6 /* TruePollViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				38E0F0CC216B32390095BE22 /* Constants.swift in Sources */,
 			);
@@ -412,14 +416,6 @@
 				607FACDA1AFB9204008FA782 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDF1AFB9204008FA782 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -534,7 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = APF8GW8A33;
+				DEVELOPMENT_TEAM = 4A8DZ57H2Y;
 				INFOPLIST_FILE = provide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
@@ -550,7 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = APF8GW8A33;
+				DEVELOPMENT_TEAM = 4A8DZ57H2Y;
 				INFOPLIST_FILE = provide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
@@ -595,7 +591,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Provide" */ = {
+		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "provide" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACED1AFB9204008FA782 /* Debug */,
