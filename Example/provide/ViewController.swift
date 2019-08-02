@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Provide
+import provide
 
 class ViewController: UIViewController {
     

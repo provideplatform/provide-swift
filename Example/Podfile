@@ -3,7 +3,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'Provide_Example' do
-  pod 'Provide', :path => '../'
+  pod 'provide', :path => '../'
 
   target 'Provide_Tests' do
     inherit! :search_paths

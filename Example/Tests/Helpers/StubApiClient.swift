@@ -6,7 +6,7 @@
 //  Copyright © 2018 Provide. All rights reserved.
 //
 
-import Provide
+import provide
 import Alamofire
 class StubApiClient: ProvideApiClient {
     
