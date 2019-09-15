@@ -2,7 +2,7 @@
   "name": "provide",
   "version": "0.4.0",
   "summary": "Provide Swift client library",
-  "swift_versions": "4.2",
+  "swift_version": "4.2",
   "description": "Provide Swift client library.",
   "homepage": "https://github.com/provideservices/provide-swift",
   "license": {
@@ -37,6 +37,5 @@
     "UICKeyChainStore": [
       "~> 2.1"
     ]
-  },
-  "swift_version": "4.2"
+  }
 }
