@@ -16,6 +16,7 @@ public class ProvideIdent: NSObject {
     // SUGGEST: Consider making these enum cases (a la Moya?)
     let authenticate = "/authenticate"
     let applications = "/applications"
+    let kycApplications = "/kyc_applications"
     let tokens = "/tokens"
     let users = "/users"
     
@@ -137,6 +138,55 @@ public class ProvideIdent: NSObject {
         let compoundPath = "\(applications)/\(appId)"
         guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
         
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.authHeaders())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+
+    // MARK: - KYCApplication Methods
+
+    public func createKYCApplication(parameters: Parameters,
+                                     successHandler: @escaping PrvdApiSuccessHandler,
+                                     failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: kycApplications) else { throw ProvideError.invalidUrl(path: applications) }
+
+        let request = Alamofire.request(url,
+                                        method: .post,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.authHeaders())
+        api.post(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+
+    public func listKYCApplications(successHandler: @escaping PrvdApiSuccessHandler,
+                                    failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildIdentUrl(path: kycApplications) else { throw ProvideError.invalidUrl(path: applications) }
+
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.authHeaders())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+
+    public func fetchKYCApplicationDetails(kycApplicationId: String,
+                                           successHandler: @escaping PrvdApiSuccessHandler,
+                                           failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(kycApplications)/\(kycApplicationId)"
+        guard let url = api.buildIdentUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+
         let request = Alamofire.request(url,
                                         method: .get,
                                         headers: api.authHeaders())
