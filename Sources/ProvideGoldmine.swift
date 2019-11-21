@@ -9,10 +9,11 @@ import Foundation
 import Alamofire
 
 public class ProvideGoldmine: NSObject {
-    
+
     private let api: ProvideApiClient
-    
+
     // API Paths
+    let accounts = "/accounts"
     let bridges = "/bridges"
     let connectors = "/connectors"
     let contracts = "/contracts"
@@ -21,10 +22,78 @@ public class ProvideGoldmine: NSObject {
     let tokens = "/tokens"
     let transactions = "/transactions"
     let wallets = "/wallets"
-    
+
     public init(_ client: ProvideApiClient = ProvideApiClient()) {
         self.api = client
         super.init()
+    }
+    // MARK: - Account Methods
+
+    public func listAccounts(parameters: Parameters,
+                             successHandler: @escaping PrvdApiSuccessHandler,
+                             failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildGoldmineUrl(path: accounts) else { throw ProvideError.invalidUrl(path: wallets) }
+
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.apiHeaders())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+    
+    public func fetchAccountBalance(accountId: String,
+                                    tokenId: String,
+                                    successHandler: @escaping PrvdApiSuccessHandler,
+                                    failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(accounts)/\(accountId)/balances/\(tokenId)"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.apiHeaders())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+
+    public func fetchAccountDetails(accountId: String,
+                                    successHandler: @escaping PrvdApiSuccessHandler,
+                                    failureHandler: @escaping PrvdApiFailureHandler) throws {
+        let compoundPath = "\(accounts)/\(accountId)"
+        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
+        
+        let request = Alamofire.request(url,
+                                        method: .get,
+                                        headers: api.apiHeaders())
+        api.get(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
+    }
+
+    public func createAccount(parameters: Parameters,
+                              successHandler: @escaping PrvdApiSuccessHandler,
+                              failureHandler: @escaping PrvdApiFailureHandler) throws {
+        guard let url = api.buildGoldmineUrl(path: accounts) else { throw ProvideError.invalidUrl(path: wallets) }
+        
+        let request = Alamofire.request(url,
+                                        method: .post,
+                                        parameters: parameters,
+                                        encoding: JSONEncoding.prettyPrinted,
+                                        headers: api.apiHeaders())
+        api.post(request, successHandler: { (result) in
+            successHandler(result as AnyObject)
+        }) { (response, result, error) in
+            failureHandler(response, result, error)
+        }
     }
     
     // MARK: - Bridge Methods
@@ -376,11 +445,10 @@ public class ProvideGoldmine: NSObject {
     
     // MARK: - Wallet Methods
     
-    public func fetchWalletBalance(walletId: String,
-                                   tokenId: String,
+    public func fetchWalletDetails(walletId: String,
                                    successHandler: @escaping PrvdApiSuccessHandler,
                                    failureHandler: @escaping PrvdApiFailureHandler) throws {
-        let compoundPath = "\(wallets)/\(walletId)/balances/\(tokenId)"
+        let compoundPath = "\(wallets)/\(walletId)"
         guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
         
         let request = Alamofire.request(url,
@@ -392,7 +460,7 @@ public class ProvideGoldmine: NSObject {
             failureHandler(response, result, error)
         }
     }
-    
+
     public func listWallets(parameters: Parameters,
                             successHandler: @escaping PrvdApiSuccessHandler,
                             failureHandler: @escaping PrvdApiFailureHandler) throws {
@@ -402,22 +470,6 @@ public class ProvideGoldmine: NSObject {
                                         method: .get,
                                         parameters: parameters,
                                         encoding: JSONEncoding.prettyPrinted,
-                                        headers: api.apiHeaders())
-        api.get(request, successHandler: { (result) in
-            successHandler(result as AnyObject)
-        }) { (response, result, error) in
-            failureHandler(response, result, error)
-        }
-    }
-    
-    public func fetchWalletDetails(walletId: String,
-                                   successHandler: @escaping PrvdApiSuccessHandler,
-                                   failureHandler: @escaping PrvdApiFailureHandler) throws {
-        let compoundPath = "\(wallets)/\(walletId)"
-        guard let url = api.buildGoldmineUrl(path: compoundPath) else { throw ProvideError.invalidUrl(path: compoundPath) }
-        
-        let request = Alamofire.request(url,
-                                        method: .get,
                                         headers: api.apiHeaders())
         api.get(request, successHandler: { (result) in
             successHandler(result as AnyObject)

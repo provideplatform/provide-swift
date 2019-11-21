@@ -8,7 +8,6 @@
 import Foundation
 import UICKeyChainStore
 
-// TODO: bolster this; look at removing the 3rd party dependency (and its warnings).
 open class ProvideKeychainService {
     
     public static let shared = ProvideKeychainService()
@@ -18,11 +17,13 @@ open class ProvideKeychainService {
     // NOTE: just supporting a single dapp's API token and wallet signing identity at a time for now.
     private let appIdTokenKey = "app-identifier"
     private let appApiTokenKey = "api-token"
+    private let appAccountIdKey = "account-identifier"
     private let appWalletIdKey = "wallet-identifier"
-    
+
     private var cachedAuthToken: String?
     private var cachedAppId: String?
     private var cachedAppApiToken: String?
+    private var cachedAppAccountId: String?
     private var cachedAppWalletId: String?
     
     subscript(key: String) -> String? {
@@ -85,12 +86,29 @@ open class ProvideKeychainService {
         }
     }
     
+    public var appAccountId: String? {
+        get {
+            if let identifier = cachedAppAccountId {
+                return identifier
+            } else if let accountIdString = self[appAccountIdKey] {
+                cachedAppAccountId = accountIdString
+                return cachedAppAccountId
+            } else {
+                return nil
+            }
+        }
+        set {
+            self[appAccountIdKey] = newValue
+            cachedAppAccountId = nil
+        }
+    }
+    
     public var appWalletId: String? {
         get {
             if let identifier = cachedAppWalletId {
                 return identifier
-            } else if let tokenString = self[appWalletIdKey] {
-                cachedAppWalletId = tokenString
+            } else if let walletIdString = self[appWalletIdKey] {
+                cachedAppWalletId = walletIdString
                 return cachedAppWalletId
             } else {
                 return nil
@@ -106,6 +124,7 @@ open class ProvideKeychainService {
         authToken = nil
         appId = nil
         appApiToken = nil
+        appAccountId = nil
         appWalletId = nil
         
         uicStore.removeAllItems()
