@@ -24,7 +24,3 @@ pod 'provide'
 
 kthomas, kyle@provide.services
 muncman, kevin@provide.services
-
-## License
-
-provide is available under the MIT license. See the LICENSE file for more info.
